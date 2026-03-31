@@ -1,0 +1,122 @@
+.dropzone {
+  border: 1.5px dashed #cbd5e1;
+  border-radius: 10px;
+  padding: 28px 20px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+  cursor: pointer;
+  transition: border-color 0.15s, background 0.15s;
+  background: #f8fafc;
+  min-height: 154px;
+  text-align: center;
+  user-select: none;
+}
+
+.dropzone:hover,
+.dropzone:focus-visible {
+  border-color: #2563eb;
+  background: #eff6ff;
+  outline: none;
+}
+
+.dropzone--over {
+  border-color: #2563eb;
+  background: #eff6ff;
+}
+
+.dropzone--loading {
+  cursor: wait;
+}
+
+/* Preloader spinner */
+.dropzone__spinner {
+  margin-bottom: 4px;
+}
+
+.dropzone__spinner-ring {
+  animation: dropzone-spin 0.9s linear infinite;
+  transform-origin: center;
+}
+
+@keyframes dropzone-spin {
+  to { transform: rotate(360deg); }
+}
+
+.dropzone__loading-name {
+  font-size: 13px;
+  font-weight: 600;
+  color: #0f172a;
+  max-width: 200px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.dropzone__loading-label {
+  font-size: 12px;
+  color: #2563eb;
+  font-weight: 500;
+}
+
+
+.dropzone__icon {
+  color: #94a3b8;
+  margin-bottom: 4px;
+}
+
+.dropzone__icon--file {
+  color: #2563eb;
+}
+
+.dropzone__label {
+  font-size: 13.5px;
+  color: #334155;
+  font-weight: 500;
+}
+
+.dropzone__link {
+  color: #2563eb;
+  text-decoration: underline;
+  text-underline-offset: 2px;
+}
+
+.dropzone__hint {
+  font-size: 11.5px;
+  color: #94a3b8;
+  letter-spacing: 0.02em;
+}
+
+.dropzone__filename {
+  font-size: 13px;
+  font-weight: 600;
+  color: #0f172a;
+  max-width: 200px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.dropzone__summary {
+  font-size: 12px;
+  color: #16a34a;
+  font-weight: 500;
+}
+
+.dropzone__clear {
+  margin-top: 6px;
+  font-size: 12px;
+  color: #64748b;
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 0;
+  text-decoration: underline;
+  text-underline-offset: 2px;
+}
+
+.dropzone__clear:hover {
+  color: #2563eb;
+}

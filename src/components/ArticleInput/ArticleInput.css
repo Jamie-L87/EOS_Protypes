@@ -1,0 +1,87 @@
+.article-input {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.article-input__label {
+  font-size: 13px;
+  font-weight: 600;
+  color: #374151;
+}
+
+.article-input__textarea {
+  width: 100%;
+  resize: vertical;
+  border: 1.5px solid #e2e8f0;
+  border-radius: 8px;
+  padding: 10px 12px;
+  font-size: 13px;
+  font-family: 'SFMono-Regular', 'Consolas', 'Liberation Mono', monospace;
+  color: #0f172a;
+  background: #f8fafc;
+  line-height: 1.6;
+  min-height: 154px;
+  transition: border-color 0.15s, box-shadow 0.15s;
+}
+
+.article-input__textarea:focus {
+  outline: none;
+  border-color: #2563eb;
+  box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.12);
+  background: #fff;
+}
+
+.article-input__textarea:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+.article-input__textarea::placeholder {
+  font-style: italic;
+}
+
+.article-input__footer {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  flex-wrap: wrap;
+}
+
+.article-input__hint {
+  font-size: 12px;
+  color: #94a3b8;
+}
+
+.article-input__hint code {
+  font-family: inherit;
+  background: #f1f5f9;
+  border: 1px solid #e2e8f0;
+  border-radius: 3px;
+  padding: 1px 4px;
+  font-size: 11px;
+}
+
+.article-input__btn {
+  background: #0f172a;
+  color: #fff;
+  border: none;
+  border-radius: 7px;
+  padding: 8px 18px;
+  font-size: 13px;
+  font-weight: 600;
+  cursor: pointer;
+  white-space: nowrap;
+  transition: background 0.15s;
+  flex-shrink: 0;
+}
+
+.article-input__btn:hover:not(:disabled) {
+  background: #1e293b;
+}
+
+.article-input__btn:disabled {
+  opacity: 0.4;
+  cursor: not-allowed;
+}

@@ -1,0 +1,249 @@
+.col-mapper {
+  border: 1.5px solid #e2e8f0;
+  border-radius: 12px;
+  background: #fff;
+  overflow: hidden;
+  margin-top: 16px;
+  display: flex;
+  flex-direction: column;
+  max-height: 80vh;
+}
+
+/* Header */
+.col-mapper__header {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 16px;
+  padding: 16px 20px 12px;
+  border-bottom: 1.5px solid #f1f5f9;
+  flex-wrap: wrap;
+}
+
+.col-mapper__title {
+  font-size: 14px;
+  font-weight: 700;
+  color: #0f172a;
+  margin: 0 0 4px;
+}
+
+.col-mapper__subtitle {
+  font-size: 12px;
+  color: #64748b;
+  margin: 0;
+}
+
+.col-mapper__sheet-select {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 12px;
+  color: #374151;
+  white-space: nowrap;
+}
+
+.col-mapper__sheet-select select {
+  border: 1.5px solid #e2e8f0;
+  border-radius: 6px;
+  padding: 4px 8px;
+  font-size: 12px;
+  color: #0f172a;
+  background: #f8fafc;
+  cursor: pointer;
+}
+
+/* Skip rows */
+.col-mapper__skip {
+  padding: 10px 20px;
+  border-bottom: 1.5px solid #f1f5f9;
+  background: #f8fafc;
+}
+
+.col-mapper__skip label {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 12px;
+  color: #475569;
+}
+
+.col-mapper__skip input {
+  width: 48px;
+  border: 1.5px solid #e2e8f0;
+  border-radius: 5px;
+  padding: 2px 6px;
+  font-size: 12px;
+  text-align: center;
+  color: #0f172a;
+  background: #fff;
+}
+
+/* Table */
+.col-mapper__table-wrap {
+  overflow-x: auto;
+  overflow-y: auto;
+  flex: 1;
+  min-height: 0;
+  border-bottom: 1.5px solid #f1f5f9;
+}
+
+.col-mapper__table {
+  border-collapse: collapse;
+  width: 100%;
+  min-width: max-content;
+  font-size: 12px;
+}
+
+.col-mapper__table thead th {
+  position: sticky;
+  top: 0;
+  background: #f8fafc;
+  padding: 8px 6px;
+  border-bottom: 2px solid #e2e8f0;
+  border-right: 1px solid #f1f5f9;
+  z-index: 1;
+}
+
+.col-mapper__table thead th:last-child {
+  border-right: none;
+}
+
+.col-mapper__table tbody td {
+  padding: 5px 8px;
+  border-bottom: 1px solid #f1f5f9;
+  border-right: 1px solid #f8fafc;
+  color: #374151;
+  max-width: 180px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.col-mapper__table tbody td:last-child {
+  border-right: none;
+}
+
+/* Skipped header rows */
+.col-mapper__row--skip td {
+  background: #fefce8;
+  color: #92400e;
+  font-style: italic;
+}
+
+/* Highlighted mapped column cells */
+.col-mapper__cell--articleAndFeature,
+.col-mapper__cell--articleCode {
+  background: #eff6ff;
+  color: #1d4ed8;
+  font-family: 'SFMono-Regular', 'Consolas', monospace;
+  font-weight: 500;
+}
+
+.col-mapper__cell--featureString {
+  background: #f0fdf4;
+  color: #166534;
+  font-family: 'SFMono-Regular', 'Consolas', monospace;
+}
+
+.col-mapper__cell--qty {
+  background: #fdf4ff;
+  color: #7e22ce;
+  text-align: right;
+}
+
+/* Role select dropdowns */
+.col-mapper__role-select {
+  width: 100%;
+  min-width: 120px;
+  border: 1.5px solid #e2e8f0;
+  border-radius: 6px;
+  padding: 4px 6px;
+  font-size: 11px;
+  font-weight: 600;
+  cursor: pointer;
+  background: #fff;
+  color: #475569;
+  transition: border-color 0.15s, background 0.15s;
+}
+
+.col-mapper__role-select--articleAndFeature,
+.col-mapper__role-select--articleCode {
+  border-color: #3b82f6;
+  background: #eff6ff;
+  color: #1d4ed8;
+}
+
+.col-mapper__role-select--featureString {
+  border-color: #22c55e;
+  background: #f0fdf4;
+  color: #166534;
+}
+
+.col-mapper__role-select--qty {
+  border-color: #a855f7;
+  background: #fdf4ff;
+  color: #7e22ce;
+}
+
+/* Footer */
+.col-mapper__footer {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  padding: 12px 20px;
+  border-top: 1.5px solid #f1f5f9;
+  background: #f8fafc;
+  flex-wrap: wrap;
+}
+
+.col-mapper__count {
+  font-size: 12px;
+  color: #374151;
+}
+
+.col-mapper__count strong {
+  color: #0f172a;
+}
+
+.col-mapper__count--none {
+  color: #94a3b8;
+}
+
+.col-mapper__actions {
+  display: flex;
+  gap: 8px;
+}
+
+.col-mapper__btn {
+  border: none;
+  border-radius: 7px;
+  padding: 8px 16px;
+  font-size: 13px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background 0.15s;
+}
+
+.col-mapper__btn--cancel {
+  background: #f1f5f9;
+  color: #475569;
+}
+
+.col-mapper__btn--cancel:hover {
+  background: #e2e8f0;
+}
+
+.col-mapper__btn--confirm {
+  background: #0f172a;
+  color: #fff;
+}
+
+.col-mapper__btn--confirm:hover:not(:disabled) {
+  background: #1e293b;
+}
+
+.col-mapper__btn--confirm:disabled {
+  opacity: 0.4;
+  cursor: not-allowed;
+}

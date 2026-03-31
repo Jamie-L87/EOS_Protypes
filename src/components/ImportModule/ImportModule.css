@@ -1,0 +1,140 @@
+.import-module {
+  background: #fff;
+  border: 1px solid #e2e8f0;
+  border-radius: 14px;
+  padding: 24px;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+/* ── Header ── */
+.import-module__header {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 16px;
+  flex-wrap: wrap;
+}
+
+.import-module__title {
+  font-size: 16px;
+  font-weight: 700;
+  color: #0f172a;
+  margin: 0 0 3px;
+}
+
+.import-module__subtitle {
+  font-size: 13px;
+  color: #64748b;
+  margin: 0;
+}
+
+.import-module__formats {
+  display: flex;
+  gap: 6px;
+  flex-wrap: wrap;
+  align-items: center;
+  flex-shrink: 0;
+}
+
+.format-pill {
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.04em;
+  background: #f1f5f9;
+  color: #475569;
+  border: 1px solid #e2e8f0;
+  border-radius: 5px;
+  padding: 3px 8px;
+  cursor: default;
+}
+
+/* ── Two-column input layout ── */
+.import-module__inputs {
+  display: grid;
+  grid-template-columns: 1fr auto 1fr;
+  gap: 0;
+  align-items: start;
+}
+
+.import-module__col {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.import-module__col-label {
+  font-size: 13px;
+  font-weight: 600;
+  color: #374151;
+}
+
+.import-module__divider {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 0 20px;
+  min-height: 154px;
+  color: #cbd5e1;
+  font-size: 12px;
+  font-weight: 600;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  gap: 6px;
+  position: relative;
+  top: 22px; /* align with the input area (below the label) */
+}
+
+.import-module__divider::before,
+.import-module__divider::after {
+  content: '';
+  display: block;
+  width: 1px;
+  flex: 1;
+  background: #e2e8f0;
+  min-height: 24px;
+}
+
+/* ── File error ── */
+.import-module__file-error {
+  font-size: 12px;
+  color: #dc2626;
+  background: #fef2f2;
+  border: 1px solid #fecaca;
+  border-radius: 6px;
+  padding: 8px 12px;
+  margin: 0;
+}
+
+/* ── Empty state ── */
+.import-module__empty {
+  font-size: 13px;
+  color: #94a3b8;
+  text-align: center;
+  padding: 8px 0;
+  margin: 0;
+}
+
+/* ── Responsive ── */
+@media (max-width: 640px) {
+  .import-module__inputs {
+    grid-template-columns: 1fr;
+  }
+
+  .import-module__divider {
+    flex-direction: row;
+    min-height: unset;
+    padding: 4px 0;
+    top: 0;
+  }
+
+  .import-module__divider::before,
+  .import-module__divider::after {
+    width: auto;
+    height: 1px;
+    flex: 1;
+    min-height: unset;
+  }
+}
