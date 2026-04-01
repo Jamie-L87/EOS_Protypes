@@ -18,7 +18,7 @@ import { useBasket } from '../../hooks/useBasket'
  * Results populate a temporary basket shown below the input panel.
  */
 export function ImportModule() {
-  const { items, addItems, removeItem, updateQty, copyItem, clearBasket, updateArticleCode, updateFeatureString } = useBasket()
+  const { items, addItems, removeItem, updateQty, copyItem, clearBasket, updateArticleCode, updateFeatureString, moveItem } = useBasket()
 
   const [fileError, setFileError] = useState(null)
   const [pendingSheetData, setPendingSheetData] = useState(null)
@@ -95,6 +95,7 @@ export function ImportModule() {
         onClear={clearBasket}
         onUpdateArticleCode={updateArticleCode}
         onUpdateFeatureString={updateFeatureString}
+        onMoveItem={moveItem}
       />
 
       {!items.length && !pendingSheetData && (

@@ -69,6 +69,39 @@
   border-bottom: 1px solid #e2e8f0;
 }
 
+.col-sort-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  background: none;
+  border: none;
+  padding: 0;
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: #64748b;
+  cursor: pointer;
+}
+
+.col-sort-btn:hover {
+  color: #2563eb;
+}
+
+.col-sort-btn--active {
+  color: #2563eb;
+}
+
+.col-sort-icon {
+  opacity: 0.5;
+  flex-shrink: 0;
+}
+
+.col-sort-btn--active .col-sort-icon,
+.col-sort-btn:hover .col-sort-icon {
+  opacity: 1;
+}
+
 .basket__table tbody tr {
   border-bottom: 1px solid #f1f5f9;
 }
@@ -77,8 +110,29 @@
   border-bottom: none;
 }
 
+.basket__table tbody tr {
+  transition: background-color 0.15s;
+}
+
+.basket__table tbody tr {
+  cursor: grab;
+  user-select: none;
+}
+
 .basket-row.status--found {
   background: #f0fdf4;
+}
+
+.basket-row--dragging {
+  opacity: 0.5;
+  background: #fef3c7 !important;
+  cursor: grabbing;
+}
+
+.basket-row--drag-over {
+  background: #dbeafe !important;
+  border-top: 2px solid #2563eb;
+  border-bottom: 2px solid #2563eb;
 }
 
 .basket__table td {
@@ -86,7 +140,8 @@
   vertical-align: middle;
 }
 
-.col-code    { width: 28%; }
+.col-line    { width: 4%; text-align: center; color: #94a3b8; font-size: 11px; }
+.col-code    { width: 26%; }
 .col-name    { width: 32%; }
 .col-price   { width: 12%; text-align: right; }
 .col-qty     { width: 12%; text-align: center; }
@@ -94,12 +149,54 @@
 .col-actions { width: 4%; text-align: right; }
 
 /* Row data */
+.basket-row__code-container {
+  display: flex;
+  align-items: flex-start;
+  gap: 8px;
+}
+
 .basket-row__code-wrapper {
   cursor: pointer;
   padding: 4px 6px;
   border-radius: 4px;
   transition: background 0.15s;
   display: block;
+  flex: 1;
+}
+
+.basket-row__code-wrapper:hover {
+  background: #f1f5f9;
+}
+
+.basket-row__edit-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 24px;
+  height: 24px;
+  padding: 3px;
+  background: none;
+  border: 1px solid #e2e8f0;
+  border-radius: 4px;
+  color: #94a3b8;
+  cursor: pointer;
+  transition: all 0.15s;
+  flex-shrink: 0;
+}
+
+.basket-row__edit-btn:hover {
+  color: #2563eb;
+  border-color: #2563eb;
+  background: #f0f9ff;
+}
+
+.basket-row__edit-btn:active {
+  transform: scale(0.95);
+}
+
+.basket-row__edit-btn svg {
+  width: 14px;
+  height: 14px;
 }
 
 .basket-row__code-wrapper:hover {

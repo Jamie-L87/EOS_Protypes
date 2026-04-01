@@ -11,14 +11,28 @@ const STATUS_LABELS = {
 
 /**
  * Displays the current basket contents with inline qty editing,
- * editable article code and feature string, and per-row removal.
+ * editable article code and feature string, per-row removal, and drag-to-reorder.
  * Shows API validation state per item.
  */
-export function BasketTable({ items, onRemove, onQtyChange, onCopy, onClear, onUpdateArticleCode, onUpdateFeatureString }) {
+export function BasketTable({ items, onRemove, onQtyChange, onCopy, onClear, onUpdateArticleCode, onUpdateFeatureString, onMoveItem }) {
   if (!items.length) return null
 
   const [editingId, setEditingId] = useState(null)
   const [editValue, setEditValue] = useState('')
+  const [draggedFromIndex, setDraggedFromIndex] = useState(null)
+  const [dragOverIndex, setDragOverIndex] = useState(null)
+  const [sortDir, setSortDir] = useState(null) // null | 'asc' | 'desc'
+
+  const toggleSort = () => {
+    setSortDir((prev) => prev === 'asc' ? 'desc' : prev === 'desc' ? null : 'asc')
+  }
+
+  const displayItems = sortDir
+    ? [...items].sort((a, b) => {
+        const cmp = a.articleCode.localeCompare(b.articleCode)
+        return sortDir === 'asc' ? cmp : -cmp
+      })
+    : items
 
   const totalQty = items.reduce((s, i) => s + i.qty, 0)
   const grandTotal = items.reduce((s, i) => s + (i.listPrice * i.qty), 0)
@@ -39,19 +53,47 @@ export function BasketTable({ items, onRemove, onQtyChange, onCopy, onClear, onU
         <table className="basket__table">
           <thead>
             <tr>
-              <th className="col-code">Article code</th>
+              <th className="col-line">#</th>
+              <th className="col-code">
+                <button className={`col-sort-btn ${sortDir ? 'col-sort-btn--active' : ''}`} onClick={toggleSort} title="Sort by article code">
+                  Article code
+                  <svg className="col-sort-icon" width="12" height="12" viewBox="0 0 12 12" fill="currentColor">
+                    {sortDir === 'desc'
+                      ? <path d="M6 9L1 3h10z" />
+                      : <path d="M6 3l5 6H1z" />
+                    }
+                  </svg>
+                </button>
+              </th>
               <th className="col-name">Product name</th>
-              <th className="col-price">List price</th>
               <th className="col-qty">Qty</th>
+              <th className="col-price">List price</th>
               <th className="col-total">Total</th>
               <th className="col-actions" aria-label="Actions" />
             </tr>
           </thead>
           <tbody>
-            {items.map((item) => (
+            {displayItems.map((item, index) => (
               <BasketRow
                 key={item.id}
                 item={item}
+                index={index}
+                isDraggedFrom={draggedFromIndex === index}
+                isDraggedOver={dragOverIndex === index}
+                onDragStart={() => setDraggedFromIndex(index)}
+                onDragOver={() => setDragOverIndex(index)}
+                onDragLeave={() => setDragOverIndex(null)}
+                onDrop={() => {
+                  if (draggedFromIndex !== null && draggedFromIndex !== index) {
+                    onMoveItem(draggedFromIndex, index)
+                  }
+                  setDraggedFromIndex(null)
+                  setDragOverIndex(null)
+                }}
+                onDragEnd={() => {
+                  setDraggedFromIndex(null)
+                  setDragOverIndex(null)
+                }}
                 onRemove={() => onRemove(item.id)}
                 onQtyChange={(q) => onQtyChange(item.id, q)}
                 onCopy={() => onCopy(item.id)}
@@ -107,7 +149,7 @@ export function BasketTable({ items, onRemove, onQtyChange, onCopy, onClear, onU
   )
 }
 
-function BasketRow({ item, onRemove, onQtyChange, onCopy, onUpdateArticleCode, onUpdateFeatureString, isEditing, editValue, onEditStart, onEditChange, onEditSave, onEditCancel }) {
+function BasketRow({ item, index, isDraggedFrom, isDraggedOver, onDragStart, onDragOver, onDragLeave, onDrop, onDragEnd, onRemove, onQtyChange, onCopy, onUpdateArticleCode, onUpdateFeatureString, isEditing, editValue, onEditStart, onEditChange, onEditSave, onEditCancel }) {
   const { text: statusText, cls: statusCls } = STATUS_LABELS[item.lookupStatus] ?? STATUS_LABELS.idle
 
   const handleKeyDown = (e) => {
@@ -121,7 +163,23 @@ function BasketRow({ item, onRemove, onQtyChange, onCopy, onUpdateArticleCode, o
   const combinedText = item.articleCode + (item.featureString ? ' ' + item.featureString : '')
 
   return (
-    <tr className={`basket-row ${statusCls}`}>
+    <tr
+      className={`basket-row ${statusCls} ${isDraggedFrom ? 'basket-row--dragging' : ''} ${isDraggedOver ? 'basket-row--drag-over' : ''}`}
+      draggable
+      onDragStart={onDragStart}
+      onDragOver={(e) => {
+        e.preventDefault()
+        onDragOver()
+      }}
+      onDragLeave={onDragLeave}
+      onDrop={(e) => {
+        e.preventDefault()
+        onDrop()
+      }}
+      onDragEnd={onDragEnd}
+    >
+      <td className="col-line">{index + 1}</td>
+
       <td className="col-code">
         {isEditing ? (
           <input
@@ -135,7 +193,7 @@ function BasketRow({ item, onRemove, onQtyChange, onCopy, onUpdateArticleCode, o
             placeholder="Article code [feature]"
           />
         ) : (
-          <div>
+          <div className="basket-row__code-container">
             <div className="basket-row__code-wrapper" onClick={() => onEditStart(combinedText)}>
               <span className="basket-row__code">{item.articleCode}</span>
               {item.featureString && (
@@ -145,7 +203,16 @@ function BasketRow({ item, onRemove, onQtyChange, onCopy, onUpdateArticleCode, o
                 <span className="basket-row__feature basket-row__feature--empty">(no feature)</span>
               )}
             </div>
-
+            <button
+              className="basket-row__edit-btn"
+              onClick={() => onEditStart(combinedText)}
+              title="Edit article code and feature string"
+              aria-label="Edit article code and feature string"
+            >
+              <svg width="14" height="14" viewBox="0 0 16 16" fill="none" stroke="currentColor" strokeWidth="1.5">
+                <path d="M11 2L14 5M1 15h4l9-9-4-4-9 9v4z" />
+              </svg>
+            </button>
           </div>
         )}
       </td>
@@ -159,14 +226,6 @@ function BasketRow({ item, onRemove, onQtyChange, onCopy, onUpdateArticleCode, o
         )}
         {(item.lookupStatus === 'not-found' || item.lookupStatus === 'error' || item.lookupStatus === 'idle') && (
           <span className={`basket-row__status-badge ${statusCls}`}>{statusText}</span>
-        )}
-      </td>
-
-      <td className="col-price">
-        {item.listPrice > 0 ? (
-          <span className="basket-row__price">${item.listPrice.toFixed(2)}</span>
-        ) : (
-          <span className="basket-row__price basket-row__price--empty">—</span>
         )}
       </td>
 
@@ -194,12 +253,16 @@ function BasketRow({ item, onRemove, onQtyChange, onCopy, onUpdateArticleCode, o
         </div>
       </td>
 
+      <td className="col-price">
+        {item.listPrice > 0 ? (
+          <span className="basket-row__price">${item.listPrice.toFixed(2)}</span>
+        ) : null}
+      </td>
+
       <td className="col-total">
         {item.listPrice > 0 ? (
           <span className="basket-row__total">${(item.listPrice * item.qty).toFixed(2)}</span>
-        ) : (
-          <span className="basket-row__total basket-row__total--empty">—</span>
-        )}
+        ) : null}
       </td>
 
       <td className="col-actions">

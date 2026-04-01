@@ -67,7 +67,12 @@ export function useBasket() {
         ...itemToCopy,
         id: uid(),
       }
-      return [...prev, newItem]
+      
+      // Find the index of the original item and insert after it
+      const itemIndex = prev.findIndex((i) => i.id === id)
+      const result = [...prev]
+      result.splice(itemIndex + 1, 0, newItem)
+      return result
     })
   }, [])
 
@@ -86,6 +91,18 @@ export function useBasket() {
       prev.map((i) => (i.id === id ? { ...i, featureString: trimmed, lookupStatus: 'idle' } : i))
     )
     lookedUp.current.delete(id)
+  }, [])
+
+  const moveItem = useCallback((fromIndex, toIndex) => {
+    setItems((prev) => {
+      if (fromIndex < 0 || fromIndex >= prev.length || toIndex < 0 || toIndex >= prev.length) {
+        return prev
+      }
+      const next = [...prev]
+      const [item] = next.splice(fromIndex, 1)
+      next.splice(toIndex, 0, item)
+      return next
+    })
   }, [])
 
   // Trigger API lookups for any item whose lookupStatus is 'idle'
@@ -134,5 +151,5 @@ export function useBasket() {
     }
   }, [items])
 
-  return { items, addItems, removeItem, updateQty, copyItem, clearBasket, updateArticleCode, updateFeatureString }
+  return { items, addItems, removeItem, updateQty, copyItem, clearBasket, updateArticleCode, updateFeatureString, moveItem }
 }

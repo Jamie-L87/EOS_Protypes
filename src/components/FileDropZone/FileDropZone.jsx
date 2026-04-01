@@ -3,13 +3,18 @@ import './FileDropZone.css'
 import { parseOBX } from '../../utils/obxParser'
 import { parseSIF } from '../../utils/sifParser'
 import { parseXLSX } from '../../utils/xlsxParser'
+import { parseOCRDocument } from '../../utils/ocrParser'
 
-const ACCEPTED = '.obx,.sif,.txt,.xlsx'
+const ACCEPTED = '.obx,.sif,.txt,.xlsx,.pdf,.jpg,.jpeg,.png'
 const ACCEPT_MAP = {
   '.obx': 'OBX',
   '.sif': 'SIF',
   '.txt': 'SIF',
   '.xlsx': 'Excel',
+  '.pdf': 'PDF (OCR)',
+  '.jpg': 'Image (OCR)',
+  '.jpeg': 'Image (OCR)',
+  '.png': 'Image (OCR)',
 }
 
 /**
@@ -36,12 +41,19 @@ export function FileDropZone({ onParsed, disabled }) {
     setLoading(true)
 
     let result
-    if (ext === '.xlsx') {
-      const buf = await file.arrayBuffer()
-      result = parseXLSX(buf)
-    } else {
-      const text = await file.text()
-      result = ext === '.obx' ? parseOBX(text) : parseSIF(text)
+    try {
+      if (ext === '.xlsx') {
+        const buf = await file.arrayBuffer()
+        result = parseXLSX(buf)
+      } else if (ext === '.pdf' || ext === '.jpg' || ext === '.jpeg' || ext === '.png') {
+        // OCR-based import
+        result = await parseOCRDocument(file)
+      } else {
+        const text = await file.text()
+        result = ext === '.obx' ? parseOBX(text) : parseSIF(text)
+      }
+    } catch (error) {
+      result = { items: [], error: error.message }
     }
 
     setLoading(false)

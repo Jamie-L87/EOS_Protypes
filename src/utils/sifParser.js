@@ -1,8 +1,8 @@
 /**
  * Parses a SIF file (Herman Miller OrderPlace format).
- * Reads PN= (product number) and QT= (quantity) pairs.
- * ON=, PL=, CN= and other fields are intentionally ignored.
- * Feature strings (if present in PN=) are preserved.
+ * Reads PN= (product number), ON= (options/features), and QT= (quantity) pairs.
+ * Feature strings are built by concatenating all ON= lines with no delimiter.
+ * PL=, CN= and other fields are intentionally ignored.
  *
  * @param {string} text — raw SIF file content
  * @returns {{ items: Array<{articleCode: string, featureString: string, qty: number}>, error?: string }}
@@ -36,16 +36,18 @@ export function parseSIF(text) {
 
     if (line.startsWith('PN=')) {
       flush()
-      // Extract article code and feature string (if present)
-      const raw = line.slice(3).trim()
-      const spaceIdx = raw.indexOf(' ')
-      currentCode = spaceIdx > 0 ? raw.slice(0, spaceIdx) : raw
-      currentFeature = spaceIdx > 0 ? raw.slice(spaceIdx + 1) : ''
+      // Extract article code (entire value, no feature parsing on this line)
+      currentCode = line.slice(3).trim()
+      currentFeature = ''
+    } else if (line.startsWith('ON=')) {
+      // Append ON= value to feature string (concatenate with no delimiter)
+      const optionValue = line.slice(3).trim()
+      currentFeature += optionValue
     } else if (line.startsWith('QT=')) {
       const v = parseInt(line.slice(3).trim(), 10)
       if (!isNaN(v) && v > 0) currentQty = v
     }
-    // ON= options, PL= price, CN= contract — intentionally ignored
+    // PL= price, CN= contract — intentionally ignored
   }
 
   flush() // capture the last item
