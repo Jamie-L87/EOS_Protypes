@@ -58,7 +58,8 @@ export function FileDropZone({ onParsed, disabled }) {
 
     setLoading(false)
     const count = result.items?.length ?? 0
-    setSummary(result.error ? null : (result.needsMapping ? 'Awaiting column mapping' : `${count} article${count !== 1 ? 's' : ''} found`))
+    const summary = result.error ? null : (result.needsReview ? 'Awaiting review' : result.needsMapping ? 'Awaiting column mapping' : `${count} article${count !== 1 ? 's' : ''} found`)
+    setSummary(summary)
     onParsed({ ...result, fileName: file.name, format })
   }
 

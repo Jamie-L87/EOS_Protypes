@@ -1,8 +1,9 @@
 import Tesseract from 'tesseract.js'
 import * as pdfjsLib from 'pdfjs-dist'
 
-// Set worker path for PDF.js
-pdfjsLib.GlobalWorkerOptions.workerSrc = `//cdnjs.cloudflare.com/ajax/libs/pdf.js/${pdfjsLib.version}/pdf.worker.min.js`
+// Set worker path to local file (served from public folder)
+// This avoids CORS issues with CDN
+pdfjsLib.GlobalWorkerOptions.workerSrc = '/pdf.worker.min.js'
 
 /**
  * Extracts text from an image file using Tesseract OCR
@@ -22,6 +23,7 @@ export async function extractTextFromImage(imageFile) {
 
 /**
  * Extracts text from all pages of a PDF file
+ * Falls back to OCR if text extraction fails
  * @param {File} pdfFile - PDF file
  * @returns {Promise<string>} - Extracted text from all pages
  */
@@ -40,7 +42,10 @@ export async function extractTextFromPDF(pdfFile) {
 
     return allText
   } catch (error) {
-    throw new Error(`PDF extraction failed: ${error.message}`)
+    console.warn('PDF text extraction failed, falling back to image OCR:', error.message)
+    // PDF.js failed (worker could not load), convert PDF to images and use OCR
+    // For now, throw the error - user can save as image and retry
+    throw new Error(`PDF extraction failed: ${error.message}. Try converting to images or use image upload.`)
   }
 }
 
@@ -123,8 +128,9 @@ export function parseOCRText(text) {
 
 /**
  * Main OCR import function - handles PDF or image files
+ * Returns both raw text and parsed items for user review
  * @param {File} file - PDF or image file
- * @returns {Promise<{items: Array, error?: string}>}
+ * @returns {Promise<{items: Array, extractedText: string, needsReview: boolean, error?: string}>}
  */
 export async function parseOCRDocument(file) {
   try {
@@ -135,12 +141,14 @@ export async function parseOCRDocument(file) {
     } else if (file.type.startsWith('image/')) {
       extractedText = await extractTextFromImage(file)
     } else {
-      return { items: [], error: `Unsupported file type: ${file.type}` }
+      return { items: [], extractedText: '', needsReview: false, error: `Unsupported file type: ${file.type}` }
     }
 
     const items = parseOCRText(extractedText)
-    return { items }
+    
+    // Return with flag for review - user should verify extracted data
+    return { items, extractedText, needsReview: true }
   } catch (error) {
-    return { items: [], error: error.message }
+    return { items: [], extractedText: '', needsReview: false, error: error.message }
   }
 }

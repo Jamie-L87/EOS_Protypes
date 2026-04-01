@@ -4,6 +4,7 @@ import { FileDropZone } from '../FileDropZone/FileDropZone'
 import { ArticleInput } from '../ArticleInput/ArticleInput'
 import { BasketTable } from '../BasketTable/BasketTable'
 import { ColumnMapper } from '../ColumnMapper/ColumnMapper'
+import { OCRMapper } from '../OCRMapper/OCRMapper'
 import { useBasket } from '../../hooks/useBasket'
 
 /**
@@ -22,8 +23,15 @@ export function ImportModule() {
 
   const [fileError, setFileError] = useState(null)
   const [pendingSheetData, setPendingSheetData] = useState(null)
+  const [pendingOCRData, setPendingOCRData] = useState(null)
 
-  const handleFileParsed = useCallback(({ items: parsed, error, needsMapping, sheetData }) => {
+  const handleFileParsed = useCallback(({ items: parsed, error, needsMapping, sheetData, needsReview, extractedText }) => {
+    if (needsReview) {
+      // OCR review needed
+      setFileError(null)
+      setPendingOCRData({ items: parsed, extractedText })
+      return
+    }
     if (needsMapping) {
       setFileError(null)
       setPendingSheetData(sheetData)
@@ -40,6 +48,15 @@ export function ImportModule() {
 
   const handleMappingCancel = useCallback(() => {
     setPendingSheetData(null)
+  }, [])
+
+  const handleOCRConfirm = useCallback((reviewed) => {
+    setPendingOCRData(null)
+    addItems(reviewed)
+  }, [addItems])
+
+  const handleOCRCancel = useCallback(() => {
+    setPendingOCRData(null)
   }, [])
 
   const handleTextAdd = useCallback((parsed) => {
@@ -86,6 +103,16 @@ export function ImportModule() {
         />
       )}
 
+      {/* ── OCR mapper (shown when PDF/image is uploaded) ── */}
+      {pendingOCRData && (
+        <OCRMapper
+          extractedText={pendingOCRData.extractedText}
+          detectedItems={pendingOCRData.items}
+          onConfirm={handleOCRConfirm}
+          onCancel={handleOCRCancel}
+        />
+      )}
+
       {/* ── Basket ── */}
       <BasketTable
         items={items}
@@ -98,7 +125,7 @@ export function ImportModule() {
         onMoveItem={moveItem}
       />
 
-      {!items.length && !pendingSheetData && (
+      {!items.length && !pendingSheetData && !pendingOCRData && (
         <p className="import-module__empty">
           Your basket is empty — upload a file or paste article codes above.
         </p>
