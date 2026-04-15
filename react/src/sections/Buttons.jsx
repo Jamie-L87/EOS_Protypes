@@ -82,7 +82,7 @@ export default function Buttons() {
     <div className="section-template">
       <div className="section-header">
         <h2 className="section-title">Buttons — Global</h2>
-        <p className="section-desc">All button variants with Resting, Hover, and Select states. Font: Meta Offc Bold.</p>
+        <p className="section-desc">All button variants with Resting, Hover, and Select states. Font: Untitled Sans Bold.</p>
       </div>
 
       <div className="section-content">

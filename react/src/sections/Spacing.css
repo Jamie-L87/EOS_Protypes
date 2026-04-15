@@ -11,7 +11,7 @@
 .spacing-section-title {
   margin: 0 0 12px 0;
   padding: 0;
-  font-family: 'Meta Offc', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+  font-family: 'Untitled Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
   font-size: 23.04px;
   font-weight: 700;
   letter-spacing: -0.01em;
@@ -23,7 +23,7 @@
 .spacing-section-desc {
   margin: 0 0 24px 0;
   padding: 0;
-  font-family: 'Meta Offc', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+  font-family: 'Untitled Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
   font-size: 15px;
   font-weight: 400;
   color: #616161;
@@ -58,7 +58,7 @@
 }
 
 .spacing-token-label {
-  font-family: 'Meta Offc', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+  font-family: 'Untitled Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
   font-size: 11px;
   font-weight: 700;
   text-transform: uppercase;
@@ -75,7 +75,7 @@
 .spacing-token-name {
   margin: 0;
   padding: 0;
-  font-family: 'Meta Offc', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+  font-family: 'Untitled Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
   font-size: 14px;
   font-weight: 600;
   color: #252525;
@@ -118,14 +118,14 @@
 }
 
 .margin-name {
-  font-family: 'Meta Offc', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+  font-family: 'Untitled Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
   font-size: 14px;
   font-weight: 600;
   color: #252525;
 }
 
 .margin-breakpoint {
-  font-family: 'Meta Offc', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+  font-family: 'Untitled Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
   font-size: 12px;
   font-weight: 400;
   color: #999999;
@@ -149,7 +149,7 @@
 }
 
 .margin-label {
-  font-family: 'Meta Offc', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+  font-family: 'Untitled Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
   font-size: 12px;
   font-weight: 700;
   color: #FFFFFF;
@@ -193,7 +193,7 @@
 }
 
 .gutter-label {
-  font-family: 'Meta Offc', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+  font-family: 'Untitled Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
   font-size: 12px;
   font-weight: 700;
   color: #00816C;
@@ -206,14 +206,14 @@
 }
 
 .gutter-name {
-  font-family: 'Meta Offc', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+  font-family: 'Untitled Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
   font-size: 14px;
   font-weight: 600;
   color: #252525;
 }
 
 .gutter-breakpoint {
-  font-family: 'Meta Offc', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+  font-family: 'Untitled Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
   font-size: 12px;
   font-weight: 400;
   color: #999999;
@@ -255,7 +255,7 @@
 .grid-spec-card h4 {
   margin: 0;
   padding: 0;
-  font-family: 'Meta Offc', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+  font-family: 'Untitled Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
   font-size: 14px;
   font-weight: 700;
   color: #252525;
@@ -273,7 +273,7 @@
 }
 
 .grid-spec-list li {
-  font-family: 'Meta Offc', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+  font-family: 'Untitled Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
   font-size: 13px;
   font-weight: 400;
   color: #616161;
