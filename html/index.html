@@ -1,0 +1,1057 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>EOS Design System — Styleguide</title>
+    <link rel="canonical" href="https://eos-styleguide.vercel.app">
+    <style>
+        /* ============================================
+           FONTS
+           ============================================ */
+        @font-face {
+            font-family: 'Untitled Sans';
+            src: url('../react/public/fonts/UNTITLEDSANS-REGULAR.OTF') format('opentype');
+            font-weight: 400;
+            font-style: normal;
+        }
+
+        @font-face {
+            font-family: 'Untitled Sans';
+            src: url('../react/public/fonts/UNTITLEDSANS-LIGHT.OTF') format('opentype');
+            font-weight: 300;
+            font-style: normal;
+        }
+
+        @font-face {
+            font-family: 'Untitled Sans';
+            src: url('../react/public/fonts/UNTITLEDSANS-MEDIUM.OTF') format('opentype');
+            font-weight: 500;
+            font-style: normal;
+        }
+
+        @font-face {
+            font-family: 'Untitled Sans';
+            src: url('../react/public/fonts/UNTITLEDSANS-BOLD.OTF') format('opentype');
+            font-weight: 700;
+            font-style: normal;
+        }
+
+        /* ============================================
+           DESIGN TOKENS
+           ============================================ */
+        :root {
+            /* Colors */
+            --color-brand-red: #E22D00;
+            --color-brand-red-dark: #A81910;
+            --color-brand-red-darker: #601B15;
+            --color-black: #1B1B1B;
+            --color-off-black: #090909;
+            --color-off-black-light: #252525;
+            --color-gray-dark: #616161;
+            --color-gray-mid: #ACACAC;
+            --color-gray-light: #EBEBEB;
+            --color-off-white: #FAFAFA;
+            --color-white: #FFFFFF;
+            --color-error-red: #CD4557;
+            --color-success-green: #00816C;
+            --color-warning-yellow: #CE973D;
+
+            /* Typography */
+            --font-family: 'Untitled Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+            --font-display-size: 118.88px;
+            --font-h1-size: 99.07px;
+            --font-h2-size: 68.8px;
+            --font-h3-size: 47.78px;
+            --font-h4-size: 33.18px;
+            --font-h5-size: 23.04px;
+            --font-h6-size: 19.2px;
+            --font-ui-size: 16px;
+            --font-ui-small-size: 13.33px;
+
+            /* Spacing */
+            --space-xs: 4px;
+            --space-sm: 8px;
+            --space-md: 16px;
+            --space-lg: 24px;
+            --space-xl: 32px;
+            --space-2xl: 48px;
+        }
+
+        /* ============================================
+           RESET & GLOBAL
+           ============================================ */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html, body {
+            width: 100%;
+            height: 100%;
+        }
+
+        body {
+            background-color: var(--color-off-white);
+            font-family: var(--font-family);
+            color: var(--color-black);
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
+            line-height: 1.6;
+        }
+
+        /* ============================================
+           LAYOUT
+           ============================================ */
+        .styleguide-container {
+            display: flex;
+            width: 100%;
+            min-height: 100vh;
+        }
+
+        .sidebar {
+            width: 260px;
+            background-color: var(--color-black);
+            color: var(--color-white);
+            padding: var(--space-lg);
+            position: fixed;
+            height: 100vh;
+            overflow-y: auto;
+            border-right: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .sidebar-header {
+            margin-bottom: var(--space-2xl);
+        }
+
+        .sidebar-header h1 {
+            font-size: 24px;
+            font-weight: 700;
+            margin-bottom: var(--space-sm);
+        }
+
+        .sidebar-header p {
+            font-size: 14px;
+            color: rgba(255, 255, 255, 0.6);
+        }
+
+        .section-list {
+            list-style: none;
+        }
+
+        .section-list li {
+            margin-bottom: var(--space-sm);
+        }
+
+        .section-button {
+            width: 100%;
+            padding: var(--space-md) var(--space-lg);
+            background: transparent;
+            border: 1px solid transparent;
+            color: rgba(255, 255, 255, 0.7);
+            font-size: 14px;
+            font-weight: 500;
+            cursor: pointer;
+            border-radius: 4px;
+            transition: all 0.2s ease;
+            text-align: left;
+        }
+
+        .section-button:hover {
+            background-color: rgba(255, 255, 255, 0.05);
+            color: var(--color-white);
+        }
+
+        .section-button.active {
+            background-color: var(--color-brand-red);
+            color: var(--color-white);
+            border-color: var(--color-brand-red);
+        }
+
+        .main-content {
+            margin-left: 260px;
+            flex: 1;
+            padding: var(--space-2xl);
+            max-width: 1400px;
+        }
+
+        /* ============================================
+           SECTIONS
+           ============================================ */
+        .section-template {
+            margin-bottom: var(--space-2xl);
+        }
+
+        .section-header {
+            margin-bottom: var(--space-2xl);
+            padding-bottom: var(--space-lg);
+            border-bottom: 1px solid var(--color-gray-light);
+        }
+
+        .section-title {
+            font-size: var(--font-h2-size);
+            font-weight: 700;
+            margin-bottom: var(--space-md);
+            color: var(--color-black);
+        }
+
+        .section-desc {
+            font-size: 16px;
+            color: var(--color-gray-dark);
+            max-width: 600px;
+        }
+
+        .section-content {
+            display: grid;
+            gap: var(--space-2xl);
+        }
+
+        /* ============================================
+           COLORS SECTION
+           ============================================ */
+        .color-group {
+            margin-bottom: var(--space-2xl);
+        }
+
+        .color-group-title {
+            font-size: 18px;
+            font-weight: 600;
+            margin-bottom: var(--space-lg);
+            color: var(--color-black);
+        }
+
+        .color-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(120px, 1fr));
+            gap: var(--space-md);
+        }
+
+        .color-swatch {
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+        }
+
+        .color-sample {
+            height: 80px;
+            border-bottom: 1px solid var(--color-gray-light);
+        }
+
+        .color-info {
+            padding: var(--space-md);
+            background: var(--color-white);
+            font-size: 12px;
+        }
+
+        .color-name {
+            font-weight: 600;
+            margin-bottom: 4px;
+        }
+
+        .color-hex {
+            color: var(--color-gray-dark);
+            font-family: 'Monaco', 'Courier New', monospace;
+        }
+
+        /* ============================================
+           BUTTONS SECTION
+           ============================================ */
+        .button-family {
+            margin-bottom: var(--space-2xl);
+        }
+
+        .button-family-title {
+            font-size: 16px;
+            font-weight: 600;
+            margin-bottom: var(--space-md);
+        }
+
+        .button-variants {
+            display: flex;
+            gap: var(--space-md);
+            flex-wrap: wrap;
+        }
+
+        .btn {
+            padding: 12px 24px;
+            border: 2px solid transparent;
+            border-radius: 4px;
+            font-family: var(--font-family);
+            font-size: 16px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.2s ease;
+        }
+
+        .btn-primary {
+            background-color: var(--color-brand-red);
+            color: var(--color-white);
+        }
+
+        .btn-primary:hover {
+            background-color: var(--color-brand-red-dark);
+        }
+
+        .btn-secondary {
+            background-color: var(--color-white);
+            color: var(--color-black);
+            border-color: var(--color-gray-light);
+        }
+
+        .btn-secondary:hover {
+            background-color: var(--color-off-white);
+            border-color: var(--color-gray-mid);
+        }
+
+        .btn-tertiary {
+            background-color: transparent;
+            color: var(--color-brand-red);
+            border-color: var(--color-brand-red);
+        }
+
+        .btn-tertiary:hover {
+            background-color: rgba(226, 45, 0, 0.05);
+        }
+
+        /* ============================================
+           TYPOGRAPHY SECTION
+           ============================================ */
+        .type-sample {
+            margin-bottom: var(--space-lg);
+            padding: var(--space-lg);
+            background: var(--color-white);
+            border-radius: 8px;
+            border: 1px solid var(--color-gray-light);
+        }
+
+        .type-preview {
+            margin-bottom: var(--space-md);
+            line-height: 1.2;
+            word-break: break-word;
+        }
+
+        .type-details {
+            font-size: 13px;
+            color: var(--color-gray-dark);
+        }
+
+        .type-details p {
+            margin-bottom: 6px;
+        }
+
+        .type-details strong {
+            color: var(--color-black);
+            font-weight: 600;
+        }
+
+        /* ============================================
+           FORM ELEMENTS SECTION
+           ============================================ */
+        .form-field {
+            margin-bottom: var(--space-lg);
+            max-width: 400px;
+        }
+
+        .form-label {
+            display: block;
+            font-weight: 600;
+            margin-bottom: var(--space-sm);
+            font-size: 14px;
+        }
+
+        .form-input {
+            width: 100%;
+            padding: 12px;
+            border: 1px solid var(--color-gray-light);
+            border-radius: 4px;
+            font-family: var(--font-family);
+            font-size: 16px;
+            transition: all 0.2s ease;
+        }
+
+        .form-input:focus {
+            outline: none;
+            border-color: var(--color-brand-red);
+            box-shadow: 0 0 0 3px rgba(226, 45, 0, 0.1);
+        }
+
+        /* ============================================
+           MESSAGES SECTION
+           ============================================ */
+        .message {
+            padding: var(--space-lg);
+            border-radius: 4px;
+            margin-bottom: var(--space-md);
+            display: flex;
+            gap: var(--space-md);
+        }
+
+        .message-info {
+            background-color: rgba(231, 237, 238, 0.5);
+            border-left: 4px solid var(--color-experience-blue);
+            color: var(--color-black);
+        }
+
+        .message-error {
+            background-color: rgba(205, 69, 87, 0.1);
+            border-left: 4px solid var(--color-error-red);
+            color: var(--color-error-red);
+        }
+
+        .message-success {
+            background-color: rgba(0, 129, 108, 0.1);
+            border-left: 4px solid var(--color-success-green);
+            color: var(--color-success-green);
+        }
+
+        .message-warning {
+            background-color: rgba(206, 151, 61, 0.1);
+            border-left: 4px solid var(--color-warning-yellow);
+            color: var(--color-warning-yellow);
+        }
+
+        /* ============================================
+           ICONS SECTION
+           ============================================ */
+        .icon-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(80px, 1fr));
+            gap: var(--space-md);
+        }
+
+        .icon-item {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: var(--space-xs);
+            padding: var(--space-md);
+            background: var(--color-white);
+            border: 1px solid var(--color-gray-light);
+            border-radius: 4px;
+            font-size: 12px;
+            text-align: center;
+        }
+
+        .icon-preview {
+            width: 40px;
+            height: 40px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--color-gray-dark);
+        }
+
+        /* ============================================
+           SPACING SECTION
+           ============================================ */
+        .spacing-demo {
+            display: flex;
+            align-items: baseline;
+            gap: var(--space-lg);
+            margin-bottom: var(--space-lg);
+            padding: var(--space-md);
+            background: var(--color-white);
+            border-radius: 4px;
+        }
+
+        .spacing-value {
+            font-weight: 600;
+            min-width: 60px;
+            font-size: 14px;
+        }
+
+        .spacing-bar {
+            height: 40px;
+            background: linear-gradient(90deg, var(--color-brand-red), rgba(226, 45, 0, 0.3));
+            border-radius: 4px;
+            flex: 1;
+        }
+
+        /* ============================================
+           ACCESSIBILITY SECTION
+           ============================================ */
+        .a11y-checklist {
+            background: var(--color-white);
+            padding: var(--space-lg);
+            border-radius: 4px;
+            border: 1px solid var(--color-gray-light);
+        }
+
+        .a11y-item {
+            display: flex;
+            align-items: flex-start;
+            gap: var(--space-md);
+            margin-bottom: var(--space-md);
+            padding-bottom: var(--space-md);
+            border-bottom: 1px solid var(--color-gray-light);
+        }
+
+        .a11y-item:last-child {
+            margin-bottom: 0;
+            padding-bottom: 0;
+            border-bottom: none;
+        }
+
+        .a11y-checkbox {
+            width: 20px;
+            height: 20px;
+            margin-top: 2px;
+            flex-shrink: 0;
+        }
+
+        .a11y-content h4 {
+            font-size: 14px;
+            font-weight: 600;
+            margin-bottom: 4px;
+        }
+
+        .a11y-content p {
+            font-size: 13px;
+            color: var(--color-gray-dark);
+        }
+
+        /* ============================================
+           GRID SECTION
+           ============================================ */
+        .grid-demo {
+            margin-bottom: var(--space-2xl);
+        }
+
+        .grid-demo-title {
+            font-size: 14px;
+            font-weight: 600;
+            margin-bottom: var(--space-md);
+        }
+
+        .grid-container {
+            display: grid;
+            gap: var(--space-md);
+            padding: var(--space-lg);
+            background: var(--color-off-white);
+            border: 1px dashed var(--color-gray-light);
+            border-radius: 4px;
+        }
+
+        .grid-col {
+            background: var(--color-white);
+            padding: var(--space-lg);
+            border: 1px solid var(--color-brand-red);
+            border-radius: 4px;
+            text-align: center;
+            font-size: 12px;
+            color: var(--color-gray-dark);
+        }
+
+        /* ============================================
+           RESPONSIVE
+           ============================================ */
+        @media (max-width: 768px) {
+            .styleguide-container {
+                flex-direction: column;
+            }
+
+            .sidebar {
+                width: 100%;
+                height: auto;
+                position: relative;
+                border-right: none;
+                border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+                padding: var(--space-lg);
+            }
+
+            .main-content {
+                margin-left: 0;
+                padding: var(--space-lg);
+            }
+
+            .section-title {
+                font-size: 32px;
+            }
+
+            .color-grid {
+                grid-template-columns: repeat(auto-fill, minmax(100px, 1fr));
+            }
+
+            .button-variants {
+                flex-direction: column;
+            }
+
+            .btn {
+                width: 100%;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="styleguide-container">
+        <!-- SIDEBAR NAVIGATION -->
+        <nav class="sidebar">
+            <div class="sidebar-header">
+                <h1>EOS Design System</h1>
+                <p>Style Guide</p>
+            </div>
+            <ul class="section-list">
+                <li><a href="#accessibility" class="section-button active">Accessibility</a></li>
+                <li><a href="#colors" class="section-button">Colors</a></li>
+                <li><a href="#type-styles" class="section-button">Type Styles</a></li>
+                <li><a href="#buttons" class="section-button">Buttons</a></li>
+                <li><a href="#form-elements" class="section-button">Form Elements</a></li>
+                <li><a href="#inputs" class="section-button">Inputs</a></li>
+                <li><a href="#messages" class="section-button">Messages</a></li>
+                <li><a href="#icons" class="section-button">Icons</a></li>
+                <li><a href="#spacing" class="section-button">Spacing</a></li>
+                <li><a href="#grid" class="section-button">Grid System</a></li>
+            </ul>
+        </nav>
+
+        <!-- MAIN CONTENT -->
+        <main class="main-content">
+            <!-- ACCESSIBILITY SECTION -->
+            <section id="accessibility" class="section-template">
+                <div class="section-header">
+                    <h2 class="section-title">Accessibility</h2>
+                    <p class="section-desc">WCAG 2.1 AA compliance guidelines for the EOS Design System. Ensuring inclusive design for all users.</p>
+                </div>
+                <div class="section-content">
+                    <div class="a11y-checklist">
+                        <div class="a11y-item">
+                            <input type="checkbox" class="a11y-checkbox" checked>
+                            <div class="a11y-content">
+                                <h4>Color Contrast</h4>
+                                <p>Minimum 4.5:1 contrast ratio for normal text, 3:1 for large text (18pt+)</p>
+                            </div>
+                        </div>
+                        <div class="a11y-item">
+                            <input type="checkbox" class="a11y-checkbox" checked>
+                            <div class="a11y-content">
+                                <h4>Focus States</h4>
+                                <p>All interactive elements have visible focus indicators</p>
+                            </div>
+                        </div>
+                        <div class="a11y-item">
+                            <input type="checkbox" class="a11y-checkbox" checked>
+                            <div class="a11y-content">
+                                <h4>Semantic HTML</h4>
+                                <p>Proper heading hierarchy and semantic markup for screen readers</p>
+                            </div>
+                        </div>
+                        <div class="a11y-item">
+                            <input type="checkbox" class="a11y-checkbox" checked>
+                            <div class="a11y-content">
+                                <h4>Alt Text</h4>
+                                <p>Descriptive alt text for all meaningful images and icons</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- COLORS SECTION -->
+            <section id="colors" class="section-template">
+                <div class="section-header">
+                    <h2 class="section-title">Colors</h2>
+                    <p class="section-desc">Complete color palette with 86 colors organized by semantic purpose and visual hierarchy.</p>
+                </div>
+                <div class="section-content">
+                    <div class="color-group">
+                        <div class="color-group-title">Brand Colors</div>
+                        <div class="color-grid">
+                            <div class="color-swatch">
+                                <div class="color-sample" style="background-color: #E22D00;"></div>
+                                <div class="color-info">
+                                    <div class="color-name">Brand Red</div>
+                                    <div class="color-hex">#E22D00</div>
+                                </div>
+                            </div>
+                            <div class="color-swatch">
+                                <div class="color-sample" style="background-color: #A81910;"></div>
+                                <div class="color-info">
+                                    <div class="color-name">Brand Red Dark</div>
+                                    <div class="color-hex">#A81910</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="color-group">
+                        <div class="color-group-title">Neutrals</div>
+                        <div class="color-grid">
+                            <div class="color-swatch">
+                                <div class="color-sample" style="background-color: #1B1B1B;"></div>
+                                <div class="color-info">
+                                    <div class="color-name">Black</div>
+                                    <div class="color-hex">#1B1B1B</div>
+                                </div>
+                            </div>
+                            <div class="color-swatch">
+                                <div class="color-sample" style="background-color: #FFFFFF; border: 1px solid #E8E8E8;"></div>
+                                <div class="color-info">
+                                    <div class="color-name">White</div>
+                                    <div class="color-hex">#FFFFFF</div>
+                                </div>
+                            </div>
+                            <div class="color-swatch">
+                                <div class="color-sample" style="background-color: #ACACAC;"></div>
+                                <div class="color-info">
+                                    <div class="color-name">Gray Mid</div>
+                                    <div class="color-hex">#ACACAC</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="color-group">
+                        <div class="color-group-title">Utility Colors</div>
+                        <div class="color-grid">
+                            <div class="color-swatch">
+                                <div class="color-sample" style="background-color: #CD4557;"></div>
+                                <div class="color-info">
+                                    <div class="color-name">Error Red</div>
+                                    <div class="color-hex">#CD4557</div>
+                                </div>
+                            </div>
+                            <div class="color-swatch">
+                                <div class="color-sample" style="background-color: #00816C;"></div>
+                                <div class="color-info">
+                                    <div class="color-name">Success Green</div>
+                                    <div class="color-hex">#00816C</div>
+                                </div>
+                            </div>
+                            <div class="color-swatch">
+                                <div class="color-sample" style="background-color: #CE973D;"></div>
+                                <div class="color-info">
+                                    <div class="color-name">Warning Yellow</div>
+                                    <div class="color-hex">#CE973D</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- TYPE STYLES SECTION -->
+            <section id="type-styles" class="section-template">
+                <div class="section-header">
+                    <h2 class="section-title">Type Styles</h2>
+                    <p class="section-desc">Complete typography system with all desktop, mobile, and specialized text styles. Font: Untitled Sans</p>
+                </div>
+                <div class="section-content">
+                    <div>
+                        <h3 style="font-size: 24px; font-weight: 600; margin-bottom: 16px;">Display</h3>
+                        <div class="type-sample">
+                            <div class="type-preview" style="font-size: 118.88px; font-weight: 700; line-height: 110%; letter-spacing: -0.03em;">Lorem Ipsum Dolor</div>
+                            <div class="type-details">
+                                <p><strong>Font:</strong> Untitled Sans</p>
+                                <p><strong>Size:</strong> 118.88px</p>
+                                <p><strong>Weight:</strong> 700 Bold</p>
+                                <p><strong>Line Height:</strong> 110%</p>
+                                <p><strong>Letter Spacing:</strong> -3%</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div>
+                        <h3 style="font-size: 24px; font-weight: 600; margin-bottom: 16px;">Heading 1</h3>
+                        <div class="type-sample">
+                            <div class="type-preview" style="font-size: 99.07px; font-weight: 700; line-height: 110%; letter-spacing: -0.02em;">Heading One</div>
+                            <div class="type-details">
+                                <p><strong>Font:</strong> Untitled Sans</p>
+                                <p><strong>Size:</strong> 99.07px</p>
+                                <p><strong>Weight:</strong> 700 Bold</p>
+                                <p><strong>Line Height:</strong> 110%</p>
+                                <p><strong>Letter Spacing:</strong> -2%</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div>
+                        <h3 style="font-size: 24px; font-weight: 600; margin-bottom: 16px;">UI Default</h3>
+                        <div class="type-sample">
+                            <div class="type-preview" style="font-size: 16px; font-weight: 500; line-height: 120%; letter-spacing: 0.01em;">Default UI Text</div>
+                            <div class="type-details">
+                                <p><strong>Font:</strong> Untitled Sans</p>
+                                <p><strong>Size:</strong> 16px</p>
+                                <p><strong>Weight:</strong> 500 Medium</p>
+                                <p><strong>Line Height:</strong> 120%</p>
+                                <p><strong>Letter Spacing:</strong> 1%</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- BUTTONS SECTION -->
+            <section id="buttons" class="section-template">
+                <div class="section-header">
+                    <h2 class="section-title">Buttons</h2>
+                    <p class="section-desc">Button components with multiple styles and states for various use cases.</p>
+                </div>
+                <div class="section-content">
+                    <div class="button-family">
+                        <div class="button-family-title">Primary Buttons</div>
+                        <div class="button-variants">
+                            <button class="btn btn-primary">Primary</button>
+                            <button class="btn btn-primary" disabled>Disabled</button>
+                        </div>
+                    </div>
+
+                    <div class="button-family">
+                        <div class="button-family-title">Secondary Buttons</div>
+                        <div class="button-variants">
+                            <button class="btn btn-secondary">Secondary</button>
+                            <button class="btn btn-secondary" disabled>Disabled</button>
+                        </div>
+                    </div>
+
+                    <div class="button-family">
+                        <div class="button-family-title">Tertiary Buttons</div>
+                        <div class="button-variants">
+                            <button class="btn btn-tertiary">Tertiary</button>
+                            <button class="btn btn-tertiary" disabled>Disabled</button>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- FORM ELEMENTS SECTION -->
+            <section id="form-elements" class="section-template">
+                <div class="section-header">
+                    <h2 class="section-title">Form Elements</h2>
+                    <p class="section-desc">Standard form field components with multiple states and configurations.</p>
+                </div>
+                <div class="section-content">
+                    <div class="form-field">
+                        <label class="form-label">Text Input — Default</label>
+                        <input type="text" class="form-input" placeholder="Enter text...">
+                    </div>
+
+                    <div class="form-field">
+                        <label class="form-label">Text Input — Focus</label>
+                        <input type="text" class="form-input" placeholder="Enter text..." autofocus>
+                    </div>
+
+                    <div class="form-field">
+                        <label class="form-label">Text Input — Disabled</label>
+                        <input type="text" class="form-input" placeholder="Enter text..." disabled>
+                    </div>
+
+                    <div class="form-field">
+                        <label class="form-label">Text Input — Error</label>
+                        <input type="text" class="form-input" style="border-color: #CD4557;" placeholder="Enter text...">
+                        <p style="color: #CD4557; font-size: 13px; margin-top: 4px;">This field has an error</p>
+                    </div>
+                </div>
+            </section>
+
+            <!-- INPUTS SECTION -->
+            <section id="inputs" class="section-template">
+                <div class="section-header">
+                    <h2 class="section-title">Inputs</h2>
+                    <p class="section-desc">Radio buttons and checkboxes with full state coverage.</p>
+                </div>
+                <div class="section-content">
+                    <div>
+                        <h3 style="font-size: 18px; font-weight: 600; margin-bottom: 16px;">Checkboxes</h3>
+                        <div style="display: flex; flex-direction: column; gap: 12px;">
+                            <label style="display: flex; align-items: center; gap: 8px; cursor: pointer;">
+                                <input type="checkbox" checked>
+                                <span>Checked</span>
+                            </label>
+                            <label style="display: flex; align-items: center; gap: 8px; cursor: pointer;">
+                                <input type="checkbox">
+                                <span>Unchecked</span>
+                            </label>
+                            <label style="display: flex; align-items: center; gap: 8px; cursor: pointer; opacity: 0.5;">
+                                <input type="checkbox" disabled>
+                                <span>Disabled</span>
+                            </label>
+                        </div>
+                    </div>
+
+                    <div style="margin-top: 32px;">
+                        <h3 style="font-size: 18px; font-weight: 600; margin-bottom: 16px;">Radio Buttons</h3>
+                        <div style="display: flex; flex-direction: column; gap: 12px;">
+                            <label style="display: flex; align-items: center; gap: 8px; cursor: pointer;">
+                                <input type="radio" name="demo" checked>
+                                <span>Option A</span>
+                            </label>
+                            <label style="display: flex; align-items: center; gap: 8px; cursor: pointer;">
+                                <input type="radio" name="demo">
+                                <span>Option B</span>
+                            </label>
+                            <label style="display: flex; align-items: center; gap: 8px; cursor: pointer; opacity: 0.5;">
+                                <input type="radio" name="demo" disabled>
+                                <span>Disabled</span>
+                            </label>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- MESSAGES SECTION -->
+            <section id="messages" class="section-template">
+                <div class="section-header">
+                    <h2 class="section-title">Messages</h2>
+                    <p class="section-desc">Message components for info, error, success, and warning states.</p>
+                </div>
+                <div class="section-content">
+                    <div class="message message-info">
+                        <div>ℹ️</div>
+                        <div><strong>Info Message</strong><br>This is an informational message for the user.</div>
+                    </div>
+
+                    <div class="message message-success">
+                        <div>✓</div>
+                        <div><strong>Success Message</strong><br>Operation completed successfully.</div>
+                    </div>
+
+                    <div class="message message-error">
+                        <div>✕</div>
+                        <div><strong>Error Message</strong><br>Something went wrong. Please try again.</div>
+                    </div>
+
+                    <div class="message message-warning">
+                        <div>⚠</div>
+                        <div><strong>Warning Message</strong><br>Please review before proceeding.</div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- ICONS SECTION -->
+            <section id="icons" class="section-template">
+                <div class="section-header">
+                    <h2 class="section-title">Icons</h2>
+                    <p class="section-desc">Complete icon library with 76 unique icons across 14 categories.</p>
+                </div>
+                <div class="section-content">
+                    <div class="icon-grid">
+                        <div class="icon-item">
+                            <div class="icon-preview">📄</div>
+                            <span>Document</span>
+                        </div>
+                        <div class="icon-item">
+                            <div class="icon-preview">🔍</div>
+                            <span>Search</span>
+                        </div>
+                        <div class="icon-item">
+                            <div class="icon-preview">⚙️</div>
+                            <span>Settings</span>
+                        </div>
+                        <div class="icon-item">
+                            <div class="icon-preview">🗑️</div>
+                            <span>Delete</span>
+                        </div>
+                        <div class="icon-item">
+                            <div class="icon-preview">📝</div>
+                            <span>Edit</span>
+                        </div>
+                        <div class="icon-item">
+                            <div class="icon-preview">✓</div>
+                            <span>Check</span>
+                        </div>
+                        <div class="icon-item">
+                            <div class="icon-preview">✕</div>
+                            <span>Close</span>
+                        </div>
+                        <div class="icon-item">
+                            <div class="icon-preview">◀</div>
+                            <span>Back</span>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- SPACING SECTION -->
+            <section id="spacing" class="section-template">
+                <div class="section-header">
+                    <h2 class="section-title">Spacing & Tokens</h2>
+                    <p class="section-desc">Complete spacing scale with 13 tokens and responsive margin/gutter specifications.</p>
+                </div>
+                <div class="section-content">
+                    <div>
+                        <h3 style="font-size: 18px; font-weight: 600; margin-bottom: 16px;">Spacing Scale</h3>
+                        <div class="spacing-demo">
+                            <div class="spacing-value">4px</div>
+                            <div class="spacing-bar" style="width: 40px;"></div>
+                        </div>
+                        <div class="spacing-demo">
+                            <div class="spacing-value">8px</div>
+                            <div class="spacing-bar" style="width: 80px;"></div>
+                        </div>
+                        <div class="spacing-demo">
+                            <div class="spacing-value">16px</div>
+                            <div class="spacing-bar" style="width: 160px;"></div>
+                        </div>
+                        <div class="spacing-demo">
+                            <div class="spacing-value">24px</div>
+                            <div class="spacing-bar" style="width: 240px;"></div>
+                        </div>
+                        <div class="spacing-demo">
+                            <div class="spacing-value">32px</div>
+                            <div class="spacing-bar" style="width: 320px;"></div>
+                        </div>
+                        <div class="spacing-demo">
+                            <div class="spacing-value">48px</div>
+                            <div class="spacing-bar" style="width: 480px;"></div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- GRID SYSTEM SECTION -->
+            <section id="grid" class="section-template">
+                <div class="section-header">
+                    <h2 class="section-title">Grid System</h2>
+                    <p class="section-desc">Responsive grid with 5 breakpoints: 1920px, 1440px, 1024px, 768px, 375px. 12-column layout.</p>
+                </div>
+                <div class="section-content">
+                    <div class="grid-demo">
+                        <div class="grid-demo-title">12 Column Grid (Full Width)</div>
+                        <div class="grid-container" style="grid-template-columns: repeat(12, 1fr);">
+                            <div class="grid-col" style="grid-column: span 1;">1</div>
+                            <div class="grid-col" style="grid-column: span 1;">1</div>
+                            <div class="grid-col" style="grid-column: span 1;">1</div>
+                            <div class="grid-col" style="grid-column: span 1;">1</div>
+                            <div class="grid-col" style="grid-column: span 1;">1</div>
+                            <div class="grid-col" style="grid-column: span 1;">1</div>
+                            <div class="grid-col" style="grid-column: span 1;">1</div>
+                            <div class="grid-col" style="grid-column: span 1;">1</div>
+                            <div class="grid-col" style="grid-column: span 1;">1</div>
+                            <div class="grid-col" style="grid-column: span 1;">1</div>
+                            <div class="grid-col" style="grid-column: span 1;">1</div>
+                            <div class="grid-col" style="grid-column: span 1;">1</div>
+                        </div>
+                    </div>
+
+                    <div class="grid-demo">
+                        <div class="grid-demo-title">6 Column Grid</div>
+                        <div class="grid-container" style="grid-template-columns: repeat(6, 1fr);">
+                            <div class="grid-col">6</div>
+                            <div class="grid-col">6</div>
+                            <div class="grid-col">6</div>
+                            <div class="grid-col">6</div>
+                            <div class="grid-col">6</div>
+                            <div class="grid-col">6</div>
+                        </div>
+                    </div>
+
+                    <div class="grid-demo">
+                        <div class="grid-demo-title">3 Column Grid</div>
+                        <div class="grid-container" style="grid-template-columns: repeat(3, 1fr);">
+                            <div class="grid-col">4</div>
+                            <div class="grid-col">4</div>
+                            <div class="grid-col">4</div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- FOOTER -->
+            <footer style="margin-top: 80px; padding-top: 32px; border-top: 1px solid var(--color-gray-light); text-align: center; color: var(--color-gray-dark); font-size: 12px;">
+                <p>EOS Design System Styleguide v1.0 • Built with HTML, CSS, React &amp; Vite<br>Last Updated: April 15, 2026</p>
+            </footer>
+        </main>
+    </div>
+</body>
+</html>
