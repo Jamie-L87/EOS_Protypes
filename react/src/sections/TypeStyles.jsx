@@ -8,6 +8,7 @@ function TypeSample({ name, size, weight, lineHeight, letterSpacing, transform, 
       </div>
       <div className="type-details">
         <h4>{name}</h4>
+        <p><strong>Font:</strong> Untitled Sans</p>
         <p><strong>Size:</strong> {size}px</p>
         <p><strong>Weight:</strong> {weight}</p>
         <p><strong>Line Height:</strong> {lineHeight}</p>
