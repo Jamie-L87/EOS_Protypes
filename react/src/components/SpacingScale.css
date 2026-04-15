@@ -1,0 +1,61 @@
+.spacing-scale h3 {
+  font-size: 18px;
+  font-weight: 700;
+  color: #252525;
+  margin: 0 0 24px 0;
+}
+
+.spacing-list {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+
+.spacing-item {
+  display: flex;
+  align-items: center;
+  gap: 24px;
+  padding: 16px;
+  background: white;
+  border-radius: 8px;
+  border: 1px solid rgba(9, 9, 9, 0.1);
+}
+
+.spacing-visual {
+  flex-shrink: 0;
+  width: 100px;
+}
+
+.spacing-bar {
+  height: 8px;
+  background: linear-gradient(90deg, #E22D00, #FF6B35);
+  border-radius: 4px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.spacing-info {
+  display: flex;
+  align-items: center;
+  gap: 32px;
+  flex: 1;
+}
+
+.spacing-name {
+  font-weight: 700;
+  color: #252525;
+  min-width: 60px;
+}
+
+.spacing-value {
+  font-weight: 600;
+  color: #616161;
+  font-family: 'Monaco', 'Courier New', monospace;
+  min-width: 80px;
+}
+
+.spacing-var {
+  font-size: 12px;
+  color: #ACACAC;
+  font-family: 'Monaco', 'Courier New', monospace;
+  opacity: 0.8;
+}

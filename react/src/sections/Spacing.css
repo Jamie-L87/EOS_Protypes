@@ -1,0 +1,320 @@
+/*** Spacing Section Styles ***/
+
+.spacing-section {
+  margin-bottom: 56px;
+}
+
+.spacing-section:last-child {
+  margin-bottom: 0;
+}
+
+.spacing-section-title {
+  margin: 0 0 12px 0;
+  padding: 0;
+  font-family: 'Meta Offc', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+  font-size: 23.04px;
+  font-weight: 700;
+  letter-spacing: -0.01em;
+  color: #252525;
+  border-bottom: 2px solid #E22D00;
+  padding-bottom: 8px;
+}
+
+.spacing-section-desc {
+  margin: 0 0 24px 0;
+  padding: 0;
+  font-family: 'Meta Offc', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+  font-size: 15px;
+  font-weight: 400;
+  color: #616161;
+  line-height: 160%;
+}
+
+/* Spacing Tokens Grid */
+.spacing-tokens-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 24px;
+}
+
+.spacing-token {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  padding-bottom: 12px;
+  border-bottom: 1px solid #E7E7E7;
+}
+
+.spacing-token-visual {
+  display: flex;
+  align-items: flex-end;
+  justify-content: flex-start;
+  background: linear-gradient(to bottom, #1060E9, #1060E9);
+  background-color: #E7EDEE;
+  border-radius: 4px;
+  padding: 8px;
+  min-height: 40px;
+  position: relative;
+}
+
+.spacing-token-label {
+  font-family: 'Meta Offc', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+  font-size: 11px;
+  font-weight: 700;
+  text-transform: uppercase;
+  color: #1064F5;
+  letter-spacing: 0.5px;
+}
+
+.spacing-token-info {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.spacing-token-name {
+  margin: 0;
+  padding: 0;
+  font-family: 'Meta Offc', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+  font-size: 14px;
+  font-weight: 600;
+  color: #252525;
+}
+
+.spacing-token-var {
+  margin: 0;
+  padding: 0;
+  font-family: 'Courier New', monospace;
+  font-size: 12px;
+  font-weight: 400;
+  color: #616161;
+  background-color: #F9F9F9;
+  padding: 4px 8px;
+  border-radius: 3px;
+}
+
+/* Responsive Margins */
+.spacing-margins-grid {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.spacing-margin-row {
+  display: flex;
+  align-items: center;
+  gap: 24px;
+  padding: 16px;
+  background-color: #F9F9F9;
+  border-radius: 4px;
+  border-left: 4px solid #1060E9;
+}
+
+.margin-info {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  min-width: 180px;
+}
+
+.margin-name {
+  font-family: 'Meta Offc', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+  font-size: 14px;
+  font-weight: 600;
+  color: #252525;
+}
+
+.margin-breakpoint {
+  font-family: 'Meta Offc', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+  font-size: 12px;
+  font-weight: 400;
+  color: #999999;
+}
+
+.margin-visual {
+  flex: 1;
+  display: flex;
+  align-items: center;
+}
+
+.margin-box {
+  height: 40px;
+  background: linear-gradient(to right, #FF820F, #FF9135);
+  opacity: 0.6;
+  border-radius: 4px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 60px;
+}
+
+.margin-label {
+  font-family: 'Meta Offc', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+  font-size: 12px;
+  font-weight: 700;
+  color: #FFFFFF;
+  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.1);
+}
+
+/* Fixed Gutters */
+.spacing-gutters-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+  gap: 20px;
+}
+
+.spacing-gutter-card {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  padding: 16px;
+  background-color: #F9F9F9;
+  border-radius: 4px;
+  border: 1px solid #E7E7E7;
+}
+
+.gutter-visual {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  height: 60px;
+  border-bottom: 2px solid #E7E7E7;
+  padding-bottom: 12px;
+}
+
+.gutter-box {
+  height: 40px;
+  background: linear-gradient(to right, rgba(61, 169, 34, 0.3), rgba(61, 169, 34, 0.5));
+  border-radius: 4px;
+  border: 1px dashed #00816C;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.gutter-label {
+  font-family: 'Meta Offc', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+  font-size: 12px;
+  font-weight: 700;
+  color: #00816C;
+}
+
+.gutter-info {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.gutter-name {
+  font-family: 'Meta Offc', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+  font-size: 14px;
+  font-weight: 600;
+  color: #252525;
+}
+
+.gutter-breakpoint {
+  font-family: 'Meta Offc', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+  font-size: 12px;
+  font-weight: 400;
+  color: #999999;
+}
+
+.gutter-type {
+  font-family: 'Courier New', monospace;
+  font-size: 11px;
+  font-weight: 600;
+  color: #00816C;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+/* Grid Overview */
+.spacing-section--grids {
+  background-color: #F9F9F9;
+  padding: 24px;
+  border-radius: 4px;
+  border: 1px solid #E7E7E7;
+}
+
+.grids-overview {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+  gap: 20px;
+}
+
+.grid-spec-card {
+  background-color: #FFFFFF;
+  padding: 16px;
+  border-radius: 4px;
+  border: 1px solid #E7E7E7;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.grid-spec-card h4 {
+  margin: 0;
+  padding: 0;
+  font-family: 'Meta Offc', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+  font-size: 14px;
+  font-weight: 700;
+  color: #252525;
+  border-bottom: 2px solid #1060E9;
+  padding-bottom: 8px;
+}
+
+.grid-spec-list {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.grid-spec-list li {
+  font-family: 'Meta Offc', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+  font-size: 13px;
+  font-weight: 400;
+  color: #616161;
+  line-height: 140%;
+}
+
+.grid-spec-list strong {
+  font-weight: 600;
+  color: #252525;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .spacing-tokens-grid {
+    grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+  }
+
+  .spacing-margin-row {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .margin-visual {
+    width: 100%;
+  }
+
+  .grids-overview {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (max-width: 375px) {
+  .spacing-token {
+    min-width: 100%;
+  }
+
+  .spacing-tokens-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .spacing-gutters-grid {
+    grid-template-columns: 1fr;
+  }
+}

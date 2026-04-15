@@ -1,0 +1,104 @@
+/* Messages Section */
+
+.msg-type-block {
+  margin-bottom: 48px;
+}
+
+.msg-type-title {
+  font-size: 23.04px;
+  font-weight: 700;
+  letter-spacing: -0.01em;
+  color: #252525;
+  margin: 0 0 16px;
+  padding-bottom: 12px;
+  border-bottom: 1px solid rgba(9,9,9,0.1);
+}
+
+.msg-states-row {
+  display: flex;
+  gap: 24px;
+  flex-wrap: wrap;
+  align-items: flex-start;
+}
+
+.msg-state-col {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  align-items: flex-start;
+}
+
+.msg-state-col--example {
+  margin-left: auto;
+}
+
+.msg-state-label {
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: #777573;
+}
+
+/* The actual notification bar */
+.msg-bar {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  padding: 0 10px;
+  gap: 20px;
+  width: 480px;
+  min-height: 51px;
+  border-radius: 4px;
+  justify-content: space-between;
+}
+
+.msg-bar--example {
+  /* Same styles, just labelled differently */
+}
+
+.msg-text {
+  font-family: 'Meta Offc', Arial, sans-serif;
+  font-size: 16px;
+  font-weight: 500;
+  line-height: 120%;
+  letter-spacing: 0.01em;
+  text-align: center;
+  flex: 1;
+}
+
+.msg-close-btn {
+  background: none;
+  border: none;
+  padding: 0;
+  width: 44px;
+  height: 44px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  flex-shrink: 0;
+}
+
+/* CSS × close icon */
+.msg-close-icon {
+  position: relative;
+  display: block;
+  width: 14px;
+  height: 14px;
+}
+
+.msg-close-icon::before,
+.msg-close-icon::after {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 14px;
+  height: 1.5px;
+  background: var(--icon-color, #252525);
+  border-radius: 1px;
+}
+
+.msg-close-icon::before { transform: translate(-50%, -50%) rotate(45deg); }
+.msg-close-icon::after  { transform: translate(-50%, -50%) rotate(-45deg); }

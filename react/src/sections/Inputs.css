@@ -1,0 +1,213 @@
+/* Inputs Section */
+
+.inputs-family {
+  margin-bottom: 48px;
+}
+
+.inputs-family-title {
+  font-size: 23.04px;
+  font-weight: 700;
+  letter-spacing: -0.01em;
+  color: #252525;
+  margin: 0 0 16px;
+  padding-bottom: 12px;
+  border-bottom: 1px solid rgba(9,9,9,0.1);
+}
+
+.radio-variants-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 24px;
+}
+
+.radio-variant-card {
+  background: #F8F8F8;
+  border-radius: 8px;
+  padding: 24px;
+  min-width: 280px;
+}
+
+.radio-variant-card--dark {
+  background: #252525;
+}
+
+.radio-variant-title {
+  font-size: 13.33px;
+  font-weight: 700;
+  letter-spacing: 0.02em;
+  text-transform: uppercase;
+  color: #ACACAC;
+  margin: 0 0 16px;
+}
+
+.radio-variant-card--dark .radio-variant-title {
+  color: rgba(250,250,250,0.4);
+}
+
+.radio-states-grid {
+  display: flex;
+  gap: 24px;
+  flex-wrap: wrap;
+}
+
+.radio-state-col {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  align-items: flex-start;
+}
+
+.radio-state-label {
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: #777573;
+}
+
+/* ── Radio item (dot + text) ── */
+.radio-item {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: 4px;
+}
+
+/* 44×44 hit target centered around 20×20 dot */
+.radio-hit {
+  width: 44px;
+  height: 44px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+.radio-dot {
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  display: block;
+  flex-shrink: 0;
+}
+
+.radio-text {
+  font-family: 'Meta Offc', Arial, sans-serif;
+  font-size: 16px;
+  line-height: 120%;
+  letter-spacing: 0.01em;
+}
+
+.state-item h4 {
+  font-size: 14px;
+  font-weight: 700;
+  color: #252525;
+  margin: 0;
+  text-align: center;
+}
+
+.state-item input[type="radio"] {
+  width: 44px;
+  height: 44px;
+  cursor: pointer;
+  accent-color: #252525;
+}
+
+.state-item input[type="radio"]:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+/* ─────────────────────────────────────────────────────────── */
+/* Checkbox Styles */
+/* ─────────────────────────────────────────────────────────── */
+
+.checkbox-variants-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 24px;
+}
+
+.checkbox-variant-card {
+  background: #F8F8F8;
+  border-radius: 8px;
+  padding: 24px;
+  min-width: 280px;
+}
+
+.checkbox-variant-card--dark {
+  background: #252525;
+}
+
+.checkbox-variant-title {
+  font-size: 13.33px;
+  font-weight: 700;
+  letter-spacing: 0.02em;
+  text-transform: uppercase;
+  color: #ACACAC;
+  margin: 0 0 16px;
+}
+
+.checkbox-variant-card--dark .checkbox-variant-title {
+  color: rgba(250,250,250,0.4);
+}
+
+.checkbox-states-grid {
+  display: flex;
+  gap: 24px;
+  flex-wrap: wrap;
+}
+
+.checkbox-state-col {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  align-items: flex-start;
+}
+
+.checkbox-state-label {
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: #777573;
+}
+
+/* ── Checkbox item (box + text) ── */
+.checkbox-item {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: 4px;
+}
+
+/* 44×44 hit target centered around 18×18 box */
+.checkbox-hit {
+  width: 44px;
+  height: 44px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  border: 2px solid;
+  border-radius: 2px;
+  background-color: transparent;
+  transition: all 0.2s ease;
+  position: relative;
+}
+
+.checkbox-check {
+  font-size: 14px;
+  font-weight: bold;
+  color: #FFFFFF;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.checkbox-text {
+  font-family: 'Meta Offc', Arial, sans-serif;
+  font-size: 16px;
+  line-height: 120%;
+  letter-spacing: 0.01em;
+}

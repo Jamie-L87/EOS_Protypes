@@ -1,0 +1,55 @@
+/* Colors Section */
+
+.color-group {
+  margin-bottom: 40px;
+}
+
+.color-group-title {
+  font-size: 23.04px;
+  font-weight: 700;
+  letter-spacing: -0.01em;
+  color: #252525;
+  margin: 0 0 16px;
+  padding-bottom: 12px;
+  border-bottom: 1px solid rgba(9,9,9,0.1);
+}
+
+.color-swatches {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 16px;
+}
+
+.color-swatch-card {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  width: 120px;
+}
+
+.color-swatch-box {
+  width: 120px;
+  height: 80px;
+  border-radius: 8px;
+  flex-shrink: 0;
+}
+
+.color-swatch-info {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.color-name {
+  font-size: 13.33px;
+  font-weight: 700;
+  color: #252525;
+  line-height: 1.2;
+}
+
+.color-value {
+  font-size: 11px;
+  font-family: 'Courier New', monospace;
+  color: #ACACAC;
+  letter-spacing: 0.02em;
+}

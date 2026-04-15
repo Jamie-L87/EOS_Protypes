@@ -1,0 +1,402 @@
+/* Form Elements Section */
+
+.fe-field-group {
+  margin-bottom: 60px;
+}
+
+.fe-field-group-title {
+  font-size: 23.04px;
+  font-weight: 700;
+  letter-spacing: -0.01em;
+  color: #252525;
+  margin: 0 0 24px;
+  padding-bottom: 16px;
+  border-bottom: 2px solid rgba(9, 9, 9, 0.12);
+}
+
+.fe-states-row {
+  display: flex;
+  gap: 32px;
+  flex-wrap: wrap;
+  align-items: flex-start;
+}
+
+.fe-state-col {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  align-items: flex-start;
+}
+
+.fe-state-label {
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: #ACACAC;
+}
+
+/* ── Field wrapper + label ── */
+.fe-field-wrapper {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  width: 375px;
+}
+
+.fe-label {
+  font-family: 'Meta Offc', Arial, sans-serif;
+  font-size: 16px;
+  font-weight: 700;
+  line-height: 120%;
+  letter-spacing: 0.01em;
+  color: #252525;
+  display: flex;
+  align-items: center;
+}
+
+.fe-help-text {
+  font-family: 'Meta Offc', Arial, sans-serif;
+  font-size: 13.33px;
+  font-weight: 500;
+  line-height: 120%;
+  letter-spacing: 0.01em;
+  color: #616161;
+  margin-top: 4px;
+}
+
+.fe-error-text {
+  font-family: 'Meta Offc', Arial, sans-serif;
+  font-size: 13.33px;
+  font-weight: 500;
+  line-height: 120%;
+  letter-spacing: 0.01em;
+  color: #CD4557;
+  margin-top: 4px;
+}
+
+/* ── Base input field ── */
+.fe-input {
+  box-sizing: border-box;
+  width: 100%;
+  height: 55px;
+  background: #FAFAFA;
+  border: 1px solid #616161;
+  border-radius: 5px;
+  padding: 0 15px;
+  font-family: 'Meta Offc', Arial, sans-serif;
+  font-size: 16px;
+  font-weight: 500;
+  letter-spacing: 0.01em;
+  color: #252525;
+  display: block;
+  outline: none;
+  transition: all 0.2s ease;
+}
+
+.fe-input:disabled {
+  cursor: not-allowed;
+  opacity: 0.7;
+}
+
+.fe-input--hover {
+  border-color: #45464D;
+  border-width: 2px;
+  padding: 0 14px;
+}
+
+.fe-input--focus {
+  background: #FFFFFF;
+  border-color: #45464D;
+  border-width: 2px;
+  padding: 0 14px;
+}
+
+.fe-input--entered {
+  background: #FFFFFF;
+  border-color: #45464D;
+  border-width: 1px;
+}
+
+.fe-input--error {
+  background: rgba(205, 69, 87, 0.05);
+  border-color: #CD4557;
+  border-width: 2px;
+  padding: 0 14px;
+}
+
+.fe-input--simple {
+  background: #F8F7F8;
+  color: #616161;
+}
+
+/* ── Input with icon (dropdown) ── */
+.fe-input-with-icon {
+  position: relative;
+  display: flex;
+  align-items: center;
+  gap: 0;
+}
+
+.fe-input-with-icon .fe-input {
+  flex: 1;
+  padding-right: 40px;
+}
+
+.fe-icon-right {
+  position: absolute;
+  right: 12px;
+  font-size: 12px;
+  color: #252525;
+  pointer-events: none;
+  font-weight: 700;
+}
+
+/* ── Input with button ── */
+.fe-input-with-button {
+  display: flex;
+  gap: 12px;
+  align-items: center;
+}
+
+.fe-input-with-button .fe-input {
+  flex: 1;
+}
+
+.fe-button {
+  font-family: 'Meta Offc', Arial, sans-serif;
+  font-size: 16px;
+  font-weight: 700;
+  line-height: 120%;
+  letter-spacing: 0.01em;
+  padding: 15px 20px;
+  border-radius: 4px;
+  border: none;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  white-space: nowrap;
+}
+
+.fe-button--ghost {
+  border: 2px solid #252525;
+  background: #FAFAFA;
+  color: #252525;
+}
+
+.fe-button--ghost:hover {
+  background: #252525;
+  color: #FFFFFF;
+}
+
+.fe-button--filled {
+  background: #252525;
+  color: #FFFFFF;
+  border: none;
+}
+
+.fe-button--filled:hover {
+  background: #404040;
+}
+
+/* ── Newsletter fields ── */
+.fe-newsletter-wrapper {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.fe-newsletter {
+  display: flex;
+  align-items: center;
+  gap: 0;
+  border-radius: 5px;
+  padding: 0;
+  transition: all 0.2s ease;
+}
+
+.fe-newsletter--light {
+  background: #FAFAFA;
+  border: 1px solid #616161;
+}
+
+.fe-newsletter--light:hover,
+.fe-newsletter--light.fe-newsletter--hover {
+  border-color: #333333;
+}
+
+.fe-newsletter--light.fe-newsletter--focus {
+  background: #FFFFFF;
+  border: 2px solid #333333;
+}
+
+.fe-newsletter--light.fe-newsletter--entered {
+  background: #FFFFFF;
+  border: 1px solid #333333;
+}
+
+.fe-newsletter--light.fe-newsletter--error {
+  background: rgba(145, 25, 19, 0.05);
+  border: 1px solid #CD4557;
+}
+
+.fe-newsletter--dark {
+  background: #252525;
+  border: 1px solid #EBEBEB;
+}
+
+.fe-newsletter--dark:hover,
+.fe-newsletter--dark.fe-newsletter--hover {
+  border-color: #FAFAFA;
+}
+
+.fe-newsletter--dark.fe-newsletter--focus {
+  background: #252525;
+  border: 2px solid #FAFAFA;
+}
+
+.fe-newsletter--dark.fe-newsletter--entered {
+  background: #45464D;
+  border: 1px solid #FAFAFA;
+}
+
+.fe-newsletter--dark.fe-newsletter--error {
+  background: rgba(205, 69, 87, 0.05);
+  border: 1px solid #CD4557;
+}
+
+.fe-newsletter-input {
+  flex: 1;
+  background: transparent;
+  border: none;
+  padding: 16px 20px;
+  font-family: 'Meta Offc', Arial, sans-serif;
+  font-size: 16px;
+  font-weight: 500;
+  line-height: 120%;
+  letter-spacing: 0.01em;
+  outline: none;
+  color: inherit;
+}
+
+.fe-newsletter--light .fe-newsletter-input {
+  color: #616161;
+}
+
+.fe-newsletter--light .fe-newsletter-input::placeholder {
+  color: #616161;
+}
+
+.fe-newsletter--dark .fe-newsletter-input {
+  color: #FFFFFF;
+}
+
+.fe-newsletter--dark .fe-newsletter-input::placeholder {
+  color: #EBEBEB;
+}
+
+.fe-newsletter-btn {
+  font-family: 'Meta Offc', Arial, sans-serif;
+  font-size: 16px;
+  font-weight: 700;
+  line-height: 120%;
+  letter-spacing: 0.01em;
+  padding: 16px 20px;
+  background: transparent;
+  border: none;
+  border-left: 1px solid rgba(0, 0, 0, 0.2);
+  cursor: pointer;
+  white-space: nowrap;
+  transition: opacity 0.2s ease;
+}
+
+.fe-newsletter--light .fe-newsletter-btn {
+  color: #252525;
+  border-left-color: rgba(0, 0, 0, 0.1);
+}
+
+.fe-newsletter--dark .fe-newsletter-btn {
+  color: #FFFFFF;
+  border-left-color: rgba(255, 255, 255, 0.2);
+}
+
+.fe-newsletter-btn:hover {
+  opacity: 0.7;
+}
+  letter-spacing: 0.01em;
+}
+
+.fe-icon-right {
+  width: 20px;
+  height: 20px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+/* ── Field + button row ── */
+.fe-input-btn-row {
+  display: flex;
+  align-items: stretch;
+  width: 392px;
+  height: 55px;
+}
+
+.fe-input--with-btn {
+  flex: 1;
+  border-right: none;
+  border-radius: 5px 0 0 5px;
+  width: auto;
+}
+
+.fe-btn-stroke {
+  flex-shrink: 0;
+  width: 130px;
+  height: 55px;
+  font-family: 'Meta Offc', Arial, sans-serif;
+  font-size: 16px;
+  font-weight: 700;
+  letter-spacing: 0.01em;
+  color: #252525;
+  background: transparent;
+  border: 2px solid #252525;
+  border-radius: 0 5px 5px 0;
+  cursor: pointer;
+}
+
+.fe-btn-fill {
+  flex-shrink: 0;
+  width: 130px;
+  height: 55px;
+  font-family: 'Meta Offc', Arial, sans-serif;
+  font-size: 16px;
+  font-weight: 700;
+  letter-spacing: 0.01em;
+  color: #FFFFFF;
+  background: #252525;
+  border: none;
+  border-radius: 0 5px 5px 0;
+  cursor: pointer;
+}
+
+/* ── Simple field ── */
+.fe-input--simple {
+  background: #F8F7F8;
+}
+
+.btn-ghost {
+  padding: 12px 24px;
+  border: 2px solid #252525;
+  background: transparent;
+  color: #252525;
+  border-radius: 5px;
+  font-size: 16px;
+  font-weight: 700;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  font-family: inherit;
+}
+
+.btn-ghost:hover {
+  background: #FAFAFA;
+}

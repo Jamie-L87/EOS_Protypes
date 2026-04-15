@@ -1,0 +1,790 @@
+/* Buttons Section */
+
+/* ─ Layout ─────────────────────────────────── */
+.btn-family {
+  margin-bottom: 56px;
+}
+
+.btn-family-title {
+  font-size: 23.04px;
+  font-weight: 700;
+  letter-spacing: -0.01em;
+  color: #252525;
+  margin: 0 0 4px;
+}
+
+.btn-family-desc {
+  font-size: 13.33px;
+  font-weight: 500;
+  color: #616161;
+  margin: 0 0 20px;
+  letter-spacing: 0.01em;
+}
+
+.btn-variants-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 32px;
+}
+
+.btn-group {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  padding: 24px;
+  background: #F8F8F8;
+  border-radius: 8px;
+}
+
+.btn-group--dark {
+  background: #252525;
+}
+
+.btn-group-title {
+  font-size: 13.33px;
+  font-weight: 700;
+  letter-spacing: 0.02em;
+  text-transform: uppercase;
+  color: #ACACAC;
+  margin: 0 0 8px;
+}
+
+.btn-group--dark .btn-group-title {
+  color: rgba(250, 250, 250, 0.5);
+}
+
+.btn-states-row {
+  display: flex;
+  gap: 24px;
+  align-items: flex-end;
+  flex-wrap: wrap;
+}
+
+.btn-state-col {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 8px;
+}
+
+.btn-state-label {
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 0.02em;
+  text-transform: uppercase;
+  color: #777573;
+}
+
+/* ─ 1. Large Button — Fill (375×55) ──────────────── */
+.btn-lf {
+  font-family: 'Meta Offc', Arial, sans-serif;
+  font-size: 16px;
+  font-weight: 700;
+  line-height: 120%;
+  letter-spacing: 0.01em;
+  width: 375px;
+  max-width: 100%;
+  height: 55px;
+  padding: 0 24px;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.btn-lf-dark              { background: #252525; color: #FFFFFF; }
+.btn-lf-dark--hover       { background: #333333; border-radius: 5px; }
+.btn-lf-dark--select      { background: #616161; border-radius: 5px; }
+.btn-lf-light             { background: #FAFAFA; color: #252525; }
+.btn-lf-light--hover      { background: #F6F6F6; }
+.btn-lf-light--select     { background: #EBEBEB; }
+
+/* ─ 2. Large Button — Fill + Icon Left (360×55) ─── */
+.btn-lfil {
+  font-family: 'Meta Offc', Arial, sans-serif;
+  font-size: 16px;
+  font-weight: 700;
+  line-height: 120%;
+  letter-spacing: 0.01em;
+  width: 360px;
+  max-width: 100%;
+  height: 55px;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+}
+
+.btn-lfil-icon {
+  position: absolute;
+  left: 15px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 44px;
+  height: 44px;
+}
+
+.btn-lfil-text {
+  text-align: center;
+}
+
+.btn-lfil-dark            { background: #252525; color: #FFFFFF; }
+.btn-lfil-dark--hover     { background: #333333; }
+.btn-lfil-dark--select    { background: #616161; }
+.btn-lfil-light           { background: #FAFAFA; color: #252525; }
+.btn-lfil-light--hover    { background: #F6F6F6; }
+.btn-lfil-light--select   { background: #EBEBEB; }
+
+/* ─ 3. Large Button — Stroke (375×55) ────────────── */
+.btn-ls {
+  font-family: 'Meta Offc', Arial, sans-serif;
+  font-size: 16px;
+  font-weight: 700;
+  line-height: 120%;
+  letter-spacing: 0.01em;
+  width: 375px;
+  max-width: 100%;
+  height: 55px;
+  padding: 0 24px;
+  border-radius: 5px;
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.btn-ls-dark              { background: transparent; border: 2px solid #252525; color: #252525; }
+.btn-ls-dark--hover       { background: #333333;     border-color: #333333;     color: #FFFFFF; }
+.btn-ls-dark--select      { background: #616161;     border-color: #616161;     color: #FFFFFF; }
+.btn-ls-light             { background: transparent; border: 2px solid #FAFAFA; color: #FAFAFA; }
+.btn-ls-light--hover      { background: #F6F6F6;     border-color: #F6F6F6;     color: #252525; }
+.btn-ls-light--select     { background: #EBEBEB;     border-color: #EBEBEB;     color: #252525; }
+
+/* ─ 4. Large Button — Icon (50×50) ──────────────── */
+.btn-li {
+  width: 50px;
+  height: 50px;
+  border-radius: 5px;
+  border: none;
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+.btn-li-dark              { background: #252525; }
+.btn-li-dark--hover       { background: #333333; }
+.btn-li-dark--select      { background: #616161; }
+.btn-li-light             { background: #FAFAFA; }
+.btn-li-light--hover      { background: #F6F6F6; }
+.btn-li-light--select     { background: #EBEBEB; }
+
+/* ─ 5. Large Button — Fill + Icon Right (337×54) ─── */
+.btn-lfir {
+  font-family: 'Meta Offc', Arial, sans-serif;
+  font-size: 16px;
+  font-weight: 700;
+  line-height: 120%;
+  letter-spacing: 0.01em;
+  width: 337px;
+  max-width: 100%;
+  height: 54px;
+  padding: 5px 10px 5px 25px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  display: inline-flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.btn-lfir-text {
+  flex: 1;
+  text-align: left;
+}
+
+.btn-lfir-icon {
+  width: 44px;
+  height: 44px;
+  flex-shrink: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.btn-lfir-dark            { background: #252525; color: #FFFFFF; }
+.btn-lfir-dark--hover     { background: #333333; }
+.btn-lfir-dark--select    { background: #616161; }
+.btn-lfir-light           { background: #FAFAFA; color: #252525; }
+.btn-lfir-light--hover    { background: #F6F6F6; }
+.btn-lfir-light--select   { background: #EBEBEB; }
+
+/* ─ 6. Default Button — Fill (132×55) ────────────── */
+.btn-df {
+  font-family: 'Meta Offc', Arial, sans-serif;
+  font-size: 16px;
+  font-weight: 700;
+  line-height: 120%;
+  letter-spacing: 0.01em;
+  width: 132px;
+  height: 55px;
+  padding: 18px 30px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.btn-df-dark              { background: #252525; color: #FFFFFF; }
+.btn-df-dark--hover       { background: #333333; }
+.btn-df-dark--select      { background: #616161; }
+.btn-df-red               { background: #E22D00; color: #FFFFFF; }
+.btn-df-red--hover        { background: #A81910; }
+.btn-df-red--select       { background: #601B15; }
+.btn-df-light             { background: #FFFFFF;  color: #252525; }
+.btn-df-light--hover      { background: #F6F6F6; }
+.btn-df-light--select     { background: #EBEBEB; }
+
+/* ─ 7. Default Button — Stroke (132×55) ─────────── */
+.btn-dstroke {
+  font-family: 'Meta Offc', Arial, sans-serif;
+  font-size: 16px;
+  font-weight: 700;
+  line-height: 120%;
+  letter-spacing: 0.01em;
+  width: 132px;
+  height: 55px;
+  padding: 18px 30px;
+  border-radius: 5px;
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.btn-dstroke-dark             { background: transparent; border: 2px solid #252525; color: #252525; }
+.btn-dstroke-dark--hover      { background: #252525;     border-color: #252525;     color: #FFFFFF; }
+.btn-dstroke-dark--select     { background: #333333;     border-color: #333333;     color: #FFFFFF; }
+.btn-dstroke-light            { background: transparent; border: 2px solid #FFFFFF;  color: #FFFFFF;  }
+.btn-dstroke-light--hover     { background: #F6F6F6;     border-color: #F6F6F6;     color: #252525; }
+.btn-dstroke-light--select    { background: #EBEBEB;     border-color: #EBEBEB;     color: #252525; }
+
+/* ─ 8. Default Button — Stroke + Icon Left (164×50) ─ */
+.btn-dsil {
+  font-family: 'Meta Offc', Arial, sans-serif;
+  font-size: 16px;
+  font-weight: 700;
+  line-height: 120%;
+  letter-spacing: 0.01em;
+  width: 164px;
+  height: 50px;
+  padding: 3px 10px;
+  border-radius: 5px;
+  cursor: pointer;
+  display: inline-flex;
+  flex-direction: row;
+  align-items: center;
+  gap: 4px;
+}
+
+.btn-dsil-icon {
+  width: 44px;
+  height: 44px;
+  flex-shrink: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.btn-dsil-text {
+  flex: 1;
+  text-align: center;
+}
+
+.btn-dsil-dark            { background: transparent; border: 2px solid #252525; color: #252525; }
+.btn-dsil-dark--hover     { background: #333333;     border-color: #333333;     color: #FFFFFF; }
+.btn-dsil-dark--select    { background: #616161;     border-color: #616161;     color: #FFFFFF; }
+.btn-dsil-light           { background: transparent; border: 2px solid #FAFAFA; color: #FAFAFA; }
+.btn-dsil-light--hover    { background: #F6F6F6;     border-color: #F6F6F6;     color: #252525; }
+.btn-dsil-light--select   { background: #EBEBEB;     border-color: #EBEBEB;     color: #252525; }
+
+/* ─ 9. Default Button — Stroke + Icon Right (164×50) · hover #45464D ─ */
+.btn-dsir {
+  font-family: 'Meta Offc', Arial, sans-serif;
+  font-size: 16px;
+  font-weight: 700;
+  line-height: 120%;
+  letter-spacing: 0.01em;
+  width: 164px;
+  height: 50px;
+  padding: 3px 10px;
+  border-radius: 5px;
+  cursor: pointer;
+  display: inline-flex;
+  flex-direction: row;
+  align-items: center;
+  gap: 4px;
+}
+
+.btn-dsir-text {
+  flex: 1;
+  padding-left: 16px;
+}
+
+.btn-dsir-icon {
+  width: 44px;
+  height: 44px;
+  flex-shrink: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.btn-dsir-dark            { background: transparent; border: 2px solid #252525; color: #252525; }
+.btn-dsir-dark--hover     { background: #45464D;     border-color: #45464D;     color: #FFFFFF; }
+.btn-dsir-dark--select    { background: #616161;     border-color: #616161;     color: #FFFFFF; }
+.btn-dsir-light           { background: transparent; border: 2px solid #FAFAFA; color: #FAFAFA; }
+.btn-dsir-light--hover    { background: #F6F6F6;     border-color: #F6F6F6;     color: #252525; }
+.btn-dsir-light--select   { background: #EBEBEB;     border-color: #EBEBEB;     color: #252525; }
+
+/* ─ 10. Default Button — Stroke — Icon Square (50×50) ─ */
+.btn-dsis {
+  width: 50px;
+  height: 50px;
+  border-radius: 5px;
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  background: transparent;
+}
+
+.btn-dsis-dark            { border: 2px solid #252525; }
+.btn-dsis-dark--hover     { background: #333333; border-color: #333333; }
+.btn-dsis-dark--select    { background: #616161; border-color: #616161; }
+.btn-dsis-light           { border: 2px solid #EBEBEB; }
+.btn-dsis-light--hover    { background: #F6F6F6; border-color: #F6F6F6; }
+.btn-dsis-light--select   { background: #EBEBEB; border-color: #EBEBEB; }
+
+/* ─ 11. Default Button — Ghost — Icon (44×44) ─────── */
+.btn-ghost {
+  width: 44px;
+  height: 44px;
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  border-radius: 5px;
+}
+
+/* ─ 12. Shop by Room — Blur Icon (138×44) ─────────── */
+.btn-sbr {
+  font-family: 'Meta Offc', Arial, sans-serif;
+  font-size: 13.33px;
+  font-weight: 700;
+  line-height: 120%;
+  letter-spacing: 0.01em;
+  width: 138px;
+  height: 44px;
+  padding: 0 10px 0 0;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  display: inline-flex;
+  flex-direction: row;
+  align-items: center;
+  background: rgba(37, 37, 37, 0.7);
+  backdrop-filter: blur(2.5px);
+  color: #FFFFFF;
+}
+
+.btn-sbr-icon {
+  width: 44px;
+  height: 44px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  padding: 6px;
+}
+
+.btn-sbr-text {
+  flex: 1;
+}
+
+/* ─ 13. Default Text Link — UI ──────────────────── */
+.btn-tlink {
+  font-family: 'Meta Offc', Arial, sans-serif;
+  font-size: 16px;
+  font-weight: 400;
+  line-height: 120%;
+  letter-spacing: 0.01em;
+  text-decoration: underline;
+  display: inline-flex;
+  align-items: center;
+  padding: 12px 0;
+  cursor: pointer;
+  background: transparent;
+  border: none;
+}
+
+.btn-tlink-dark           { color: #252525; }
+.btn-tlink-dark--hover    { color: #45464D; text-decoration: underline; display: inline-flex; align-items: center; padding: 12px 0; font-family: 'Meta Offc', Arial, sans-serif; font-size: 16px; font-weight: 400; letter-spacing: 0.01em; cursor: pointer; background: transparent; border: none; }
+.btn-tlink-dark--select   { color: #616161; text-decoration: underline; display: inline-flex; align-items: center; padding: 12px 0; font-family: 'Meta Offc', Arial, sans-serif; font-size: 16px; font-weight: 400; letter-spacing: 0.01em; cursor: pointer; background: transparent; border: none; }
+.btn-tlink-light          { color: #FAFAFA; }
+.btn-tlink-light--hover   { color: #F6F6F6; text-decoration: underline; display: inline-flex; align-items: center; padding: 12px 0; font-family: 'Meta Offc', Arial, sans-serif; font-size: 16px; font-weight: 400; letter-spacing: 0.01em; cursor: pointer; background: transparent; border: none; }
+.btn-tlink-light--select  { color: #EBEBEB; text-decoration: underline; display: inline-flex; align-items: center; padding: 12px 0; font-family: 'Meta Offc', Arial, sans-serif; font-size: 16px; font-weight: 400; letter-spacing: 0.01em; cursor: pointer; background: transparent; border: none; }
+
+/* ─ 14. Mobile Small Button — Stroke + Icon Left (169×44) ── */
+.btn-msil {
+  font-family: 'Meta Offc', Arial, sans-serif;
+  font-size: 13.33px;
+  font-weight: 700;
+  line-height: 120%;
+  letter-spacing: 0.01em;
+  width: 169px;
+  height: 44px;
+  padding: 13px 10px;
+  border-radius: 5px;
+  cursor: pointer;
+  display: inline-flex;
+  flex-direction: row;
+  align-items: center;
+  gap: 5px;
+}
+
+.btn-msil-icon {
+  width: 12px;
+  height: 12px;
+  flex-shrink: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.btn-msil-text {
+  flex: 1;
+}
+
+.btn-msil-dark            { background: transparent; border: 1.5px solid #1B1B1B; color: #252525; }
+.btn-msil-dark--hover     { background: #45464D;     border-color: #45464D;       color: #FFFFFF; }
+.btn-msil-dark--select    { background: #616161;     border-color: #616161;       color: #FFFFFF; }
+.btn-msil-light           { background: transparent; border: 1.5px solid #FAFAFA; color: #FAFAFA; }
+.btn-msil-light--hover    { background: #F6F6F6;     border-color: #F6F6F6;       color: #252525; }
+.btn-msil-light--select   { background: #EBEBEB;     border-color: #EBEBEB;       color: #252525; }
+
+/* ─ 15. Mobile Small Button — Stroke — Icon Square (44×44) · hover #45464D ─ */
+.btn-msis {
+  width: 44px;
+  height: 44px;
+  border-radius: 5px;
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  background: transparent;
+}
+
+.btn-msis-dark            { border: 2px solid #252525; }
+.btn-msis-dark--hover     { background: #45464D; border-color: #45464D; }
+.btn-msis-dark--select    { background: #616161; border-color: #616161; }
+.btn-msis-light           { border: 2px solid #FAFAFA; }
+.btn-msis-light--hover    { background: #FAFAFA; border-color: #FAFAFA; }
+.btn-msis-light--select   { background: #EBEBEB; border-color: #EBEBEB; }
+
+/* ─ 16. Mobile Button — Stroke (88×44) ─────────── */
+.btn-ms {
+  font-family: 'Meta Offc', Arial, sans-serif;
+  font-size: 13.33px;
+  font-weight: 700;
+  line-height: 120%;
+  letter-spacing: 0.01em;
+  width: 88px;
+  height: 44px;
+  padding: 13px 10px 12px;
+  border-radius: 5px;
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 5px;
+}
+
+.btn-ms-dark              { background: transparent; border: 1.5px solid #252525; color: #252525; }
+.btn-ms-dark--hover       { background: #333333;     border-color: #333333;       color: #FFFFFF; }
+.btn-ms-dark--select      { background: #616161;     border-color: #616161;       color: #FFFFFF; }
+.btn-ms-light             { background: transparent; border: 1.5px solid #FAFAFA; color: #FAFAFA; }
+.btn-ms-light--hover      { background: #F6F6F6;     border-color: #F6F6F6;       color: #252525; }
+.btn-ms-light--select     { background: #EBEBEB;     border-color: #EBEBEB;       color: #252525; }
+
+/* ─ 17. Mobile Button — Stroke + Icon Right (127×44) ─ */
+.btn-msir {
+  font-family: 'Meta Offc', Arial, sans-serif;
+  font-size: 13.33px;
+  font-weight: 700;
+  line-height: 120%;
+  letter-spacing: 0.01em;
+  width: 127px;
+  height: 44px;
+  padding: 0 0 0 15px;
+  border-radius: 5px;
+  cursor: pointer;
+  display: inline-flex;
+  flex-direction: row;
+  align-items: center;
+  gap: 4px;
+}
+
+.btn-msir-text {
+  flex: 1;
+}
+
+.btn-msir-icon {
+  width: 44px;
+  height: 44px;
+  flex-shrink: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.btn-msir-dark            { background: transparent; border: 2px solid #252525; color: #252525; }
+.btn-msir-dark--hover     { background: #333333;     border-color: #333333;     color: #FFFFFF; }
+.btn-msir-dark--select    { background: #616161;     border-color: #616161;     color: #FFFFFF; }
+.btn-msir-light           { background: transparent; border: 2px solid #FAFAFA; color: #FAFAFA; }
+.btn-msir-light--hover    { background: #F6F6F6;     border-color: #F6F6F6;     color: #252525; }
+.btn-msir-light--select   { background: #EBEBEB;     border-color: #EBEBEB;     color: #252525; }
+
+/* ─ 18. Mobile Button — Fill (88×44) ────────────── */
+.btn-mf {
+  font-family: 'Meta Offc', Arial, sans-serif;
+  font-size: 13.33px;
+  font-weight: 700;
+  line-height: 120%;
+  letter-spacing: 0.01em;
+  width: 88px;
+  height: 44px;
+  padding: 13px 10px 12px;
+  border-radius: 5px;
+  border: none;
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 5px;
+}
+
+.btn-mf-dark              { background: #252525; color: #FFFFFF; }
+.btn-mf-dark--hover       { background: #333333; }
+.btn-mf-dark--select      { background: #616161; }
+.btn-mf-red               { background: #E22D00; color: #FFFFFF; }
+.btn-mf-red--hover        { background: #A81910; }
+.btn-mf-red--select       { background: #601B15; }
+.btn-mf-light             { background: #FAFAFA; color: #252525; }
+.btn-mf-light--hover      { background: #F6F6F6; }
+.btn-mf-light--select     { background: #EBEBEB; }
+
+/* ─ 19. Small Text Link — UI ─── 13.33px Bold Uppercase Underline ─ */
+.btn-stlink {
+  font-family: 'Meta Offc', Arial, sans-serif;
+  font-size: 13.33px;
+  font-weight: 700;
+  line-height: 120%;
+  letter-spacing: 0.01em;
+  text-decoration: underline;
+  text-transform: uppercase;
+  display: inline-flex;
+  align-items: center;
+  padding: 12px 0;
+  cursor: pointer;
+  background: transparent;
+  border: none;
+}
+
+.btn-stlink-dark          { color: #252525; }
+.btn-stlink-dark--hover   { color: #45464D; text-decoration: underline; text-transform: uppercase; display: inline-flex; align-items: center; padding: 12px 0; font-family: 'Meta Offc', Arial, sans-serif; font-size: 13.33px; font-weight: 700; letter-spacing: 0.01em; cursor: pointer; background: transparent; border: none; }
+.btn-stlink-dark--select  { color: #616161; text-decoration: underline; text-transform: uppercase; display: inline-flex; align-items: center; padding: 12px 0; font-family: 'Meta Offc', Arial, sans-serif; font-size: 13.33px; font-weight: 700; letter-spacing: 0.01em; cursor: pointer; background: transparent; border: none; }
+.btn-stlink-light         { color: #FAFAFA; }
+.btn-stlink-light--hover  { color: #F6F6F6; text-decoration: underline; text-transform: uppercase; display: inline-flex; align-items: center; padding: 12px 0; font-family: 'Meta Offc', Arial, sans-serif; font-size: 13.33px; font-weight: 700; letter-spacing: 0.01em; cursor: pointer; background: transparent; border: none; }
+.btn-stlink-light--select { color: #EBEBEB; text-decoration: underline; text-transform: uppercase; display: inline-flex; align-items: center; padding: 12px 0; font-family: 'Meta Offc', Arial, sans-serif; font-size: 13.33px; font-weight: 700; letter-spacing: 0.01em; cursor: pointer; background: transparent; border: none; }
+
+/* ─ 20. Small Text Link — UI + Icon Left (152×44) ─── */
+.btn-stlil {
+  font-family: 'Meta Offc', Arial, sans-serif;
+  font-size: 13.33px;
+  font-weight: 700;
+  line-height: 120%;
+  letter-spacing: 0.01em;
+  text-decoration: underline;
+  text-transform: uppercase;
+  display: inline-flex;
+  flex-direction: row;
+  align-items: center;
+  padding: 0 15px 0 0;
+  gap: 8px;
+  cursor: pointer;
+  background: transparent;
+  border: none;
+  width: 152px;
+  height: 44px;
+}
+
+.btn-stlil-icon {
+  width: 44px;
+  height: 44px;
+  flex-shrink: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.btn-stlil-text {
+  flex: 1;
+  text-align: right;
+}
+
+.btn-stlil-dark           { color: #252525; }
+.btn-stlil-dark--hover    { color: #45464D; text-decoration: underline; text-transform: uppercase; display: inline-flex; flex-direction: row; align-items: center; padding: 0 15px 0 0; gap: 8px; font-family: 'Meta Offc', Arial, sans-serif; font-size: 13.33px; font-weight: 700; letter-spacing: 0.01em; cursor: pointer; background: transparent; border: none; width: 152px; height: 44px; }
+.btn-stlil-dark--select   { color: #616161; text-decoration: underline; text-transform: uppercase; display: inline-flex; flex-direction: row; align-items: center; padding: 0 15px 0 0; gap: 8px; font-family: 'Meta Offc', Arial, sans-serif; font-size: 13.33px; font-weight: 700; letter-spacing: 0.01em; cursor: pointer; background: transparent; border: none; width: 152px; height: 44px; }
+.btn-stlil-light          { color: #FAFAFA; }
+.btn-stlil-light--hover   { color: #F6F6F6; text-decoration: underline; text-transform: uppercase; display: inline-flex; flex-direction: row; align-items: center; padding: 0 15px 0 0; gap: 8px; font-family: 'Meta Offc', Arial, sans-serif; font-size: 13.33px; font-weight: 700; letter-spacing: 0.01em; cursor: pointer; background: transparent; border: none; width: 152px; height: 44px; }
+.btn-stlil-light--select  { color: #EBEBEB; text-decoration: underline; text-transform: uppercase; display: inline-flex; flex-direction: row; align-items: center; padding: 0 15px 0 0; gap: 8px; font-family: 'Meta Offc', Arial, sans-serif; font-size: 13.33px; font-weight: 700; letter-spacing: 0.01em; cursor: pointer; background: transparent; border: none; width: 152px; height: 44px; }
+
+/* ─ 21. Text Link — UI — Uppercase · hover dark: #333333 ─ */
+.btn-tlup {
+  font-family: 'Meta Offc', Arial, sans-serif;
+  font-size: 13.33px;
+  font-weight: 700;
+  line-height: 120%;
+  letter-spacing: 0.01em;
+  text-decoration: underline;
+  text-transform: uppercase;
+  display: inline-flex;
+  align-items: flex-start;
+  padding: 13px 0;
+  cursor: pointer;
+  background: transparent;
+  border: none;
+}
+
+.btn-tlup-dark            { color: #252525; }
+.btn-tlup-dark--hover     { color: #333333; text-decoration: underline; text-transform: uppercase; display: inline-flex; align-items: flex-start; padding: 13px 0; font-family: 'Meta Offc', Arial, sans-serif; font-size: 13.33px; font-weight: 700; letter-spacing: 0.01em; cursor: pointer; background: transparent; border: none; }
+.btn-tlup-dark--select    { color: #616161; text-decoration: underline; text-transform: uppercase; display: inline-flex; align-items: flex-start; padding: 13px 0; font-family: 'Meta Offc', Arial, sans-serif; font-size: 13.33px; font-weight: 700; letter-spacing: 0.01em; cursor: pointer; background: transparent; border: none; }
+.btn-tlup-light           { color: #FAFAFA; }
+.btn-tlup-light--hover    { color: #F6F6F6; text-decoration: underline; text-transform: uppercase; display: inline-flex; align-items: flex-start; padding: 13px 0; font-family: 'Meta Offc', Arial, sans-serif; font-size: 13.33px; font-weight: 700; letter-spacing: 0.01em; cursor: pointer; background: transparent; border: none; }
+.btn-tlup-light--select   { color: #EBEBEB; text-decoration: underline; text-transform: uppercase; display: inline-flex; align-items: flex-start; padding: 13px 0; font-family: 'Meta Offc', Arial, sans-serif; font-size: 13.33px; font-weight: 700; letter-spacing: 0.01em; cursor: pointer; background: transparent; border: none; }
+
+/* ─ 22. Badge ────────────────────────────────────── */
+.badge {
+  font-family: 'Meta Offc', Arial, sans-serif;
+  font-size: 11.11px;
+  font-weight: 700;
+  line-height: 120%;
+  letter-spacing: 0.01em;
+  text-transform: uppercase;
+  text-align: center;
+  padding: 8px 13px;
+  border-radius: 5px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.badge-dark               { border: 1px solid rgba(9, 9, 9, 0.15); color: #252525; background: transparent; }
+.badge-light              { border: 1px solid rgba(255, 255, 255, 0.2); color: #FFFFFF; background: transparent; }
+
+/* ─ 23. Tool Tip ─────────────────────────────────── */
+.btn-tooltip {
+  font-family: 'Meta Offc', Arial, sans-serif;
+  font-size: 13.33px;
+  font-weight: 700;
+  line-height: 120%;
+  letter-spacing: 0.01em;
+  padding: 12px 16px;
+  border-radius: 5px;
+  background: #252525;
+  color: #FAFAFA;
+  display: inline-block;
+  min-width: 104px;
+  text-align: center;
+}
+
+
+.btn-family-desc {
+  font-size: 13.33px;
+  font-weight: 500;
+  color: #616161;
+  margin: 0 0 20px;
+  letter-spacing: 0.01em;
+}
+
+.btn-variants-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 32px;
+}
+
+.btn-group {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  padding: 24px;
+  background: #F8F8F8;
+  border-radius: 8px;
+}
+
+.btn-group--dark {
+  background: #252525;
+}
+
+.btn-group-title {
+  font-size: 13.33px;
+  font-weight: 700;
+  letter-spacing: 0.02em;
+  text-transform: uppercase;
+  color: #ACACAC;
+  margin: 0 0 8px;
+}
+
+.btn-group--dark .btn-group-title {
+  color: rgba(250,250,250,0.5);
+}
+
+.btn-states-row {
+  display: flex;
+  gap: 24px;
+  align-items: flex-end;
+  flex-wrap: wrap;
+}
+
+.btn-state-col {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 8px;
+}
+
+.btn-state-label {
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 0.02em;
+  text-transform: uppercase;
+  color: #777573;
+}
+
+/* ─ 1. Large Button — Fill (375×55) ──────────────── */

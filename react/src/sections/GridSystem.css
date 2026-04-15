@@ -1,0 +1,318 @@
+/* Grid System & Spacing Section */
+
+/* ── SECTION TITLES ── */
+.gs-section-title {
+  font-size: 23.04px;
+  font-weight: 700;
+  letter-spacing: -0.01em;
+  color: #252525;
+  margin: 40px 0 24px;
+  padding-bottom: 12px;
+  border-bottom: 1px solid rgba(9, 9, 9, 0.1);
+}
+
+.gs-section-title:first-of-type {
+  margin-top: 0;
+}
+
+/* ──── DESIGN PRINCIPLES SECTION ──── */
+.gs-principles-section {
+  margin-bottom: 56px;
+}
+
+.gs-principles {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 24px;
+  margin-top: 24px;
+}
+
+.gs-principle-card {
+  padding: 24px;
+  border: 1px solid rgba(9, 9, 9, 0.1);
+  border-radius: 8px;
+  background: linear-gradient(135deg, rgba(16, 96, 233, 0.02) 0%, rgba(16, 96, 233, 0) 100%);
+  transition: all 0.2s ease;
+}
+
+.gs-principle-card:hover {
+  border-color: rgba(16, 96, 233, 0.3);
+  background: linear-gradient(135deg, rgba(16, 96, 233, 0.05) 0%, rgba(16, 96, 233, 0.02) 100%);
+}
+
+.gs-principle-icon {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 48px;
+  height: 48px;
+  border-radius: 6px;
+  background: rgba(16, 96, 233, 0.1);
+  color: rgba(16, 96, 233, 0.8);
+  font-size: 20px;
+  font-weight: 700;
+  margin-bottom: 12px;
+}
+
+.gs-principle-card h4 {
+  font-size: 16px;
+  font-weight: 700;
+  color: #252525;
+  margin: 0 0 8px;
+}
+
+.gs-principle-card p {
+  font-size: 13.33px;
+  font-weight: 500;
+  color: #616161;
+  line-height: 1.6;
+  margin: 0;
+}
+
+/* ──── BREAKPOINTS SECTION ──── */
+.gs-breakpoints-section {
+  margin-bottom: 56px;
+}
+
+.gs-breakpoints-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 24px;
+  margin-top: 24px;
+}
+
+.gs-breakpoint-card {
+  padding: 24px;
+  border: 1px solid rgba(9, 9, 9, 0.1);
+  border-radius: 8px;
+  background: #fafafa;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.gs-card-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: 16px;
+}
+
+.gs-card-name {
+  font-size: 18.72px;
+  font-weight: 700;
+  color: #252525;
+  margin: 0;
+  letter-spacing: -0.01em;
+}
+
+.gs-card-principle {
+  font-size: 12px;
+  font-weight: 600;
+  color: #ACACAC;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  margin: 0;
+  padding: 6px 12px;
+  background: rgba(16, 96, 233, 0.08);
+  border-radius: 4px;
+  white-space: nowrap;
+}
+
+.gs-card-specs {
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  gap: 12px;
+}
+
+.gs-spec {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  padding: 12px;
+  background: white;
+  border: 1px solid rgba(9, 9, 9, 0.06);
+  border-radius: 4px;
+}
+
+.gs-spec-label {
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: #ACACAC;
+}
+
+.gs-spec-value {
+  font-size: 13.33px;
+  font-weight: 700;
+  color: #252525;
+  font-family: 'Courier New', monospace;
+}
+
+.gs-grid-visualization {
+  display: flex;
+  gap: 0;
+  height: 48px;
+  border-radius: 4px;
+  overflow: hidden;
+  background: white;
+  border: 1px solid rgba(9, 9, 9, 0.06);
+}
+
+.gs-margin-left,
+.gs-margin-right {
+  background: rgba(255, 152, 0, 0.1);
+  border-right: 1px dashed rgba(255, 152, 0, 0.3);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 10px;
+  color: rgba(255, 152, 0, 0.6);
+  font-weight: 600;
+  min-width: 80px;
+  flex: 0 0 auto;
+}
+
+.gs-margin-right {
+  border-left: 1px dashed rgba(255, 152, 0, 0.3);
+  border-right: none;
+}
+
+.gs-column-viz {
+  flex: 1;
+  background: rgba(16, 96, 233, 0.15);
+  border-right: 1px solid rgba(16, 96, 233, 0.3);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+}
+
+.gs-column-viz:last-child {
+  border-right: none;
+}
+
+.gs-column-label {
+  font-size: 9px;
+  font-weight: 600;
+  color: rgba(16, 96, 233, 0.5);
+  text-align: center;
+  padding: 4px;
+}
+
+/* ──── SPACING SCALE SECTION ──── */
+.gs-spacing-section {
+  margin-bottom: 56px;
+}
+
+.gs-spacing-desc {
+  font-size: 13.33px;
+  font-weight: 500;
+  color: #616161;
+  line-height: 1.6;
+  margin: 0 0 20px;
+}
+
+.gs-spacing-scale {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  margin-top: 24px;
+}
+
+.gs-spacing-item {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+  padding: 12px;
+  background: white;
+  border: 1px solid rgba(9, 9, 9, 0.06);
+  border-radius: 4px;
+}
+
+.gs-spacing-visual {
+  flex-shrink: 0;
+  width: 100px;
+  display: flex;
+  align-items: center;
+}
+
+.gs-spacing-bar {
+  background: linear-gradient(90deg, rgba(16, 96, 233, 0.6) 0%, rgba(16, 96, 233, 0.3) 100%);
+  border-radius: 2px;
+  min-height: 16px;
+}
+
+.gs-spacing-info {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  flex: 1;
+}
+
+.gs-spacing-name {
+  font-size: 13.33px;
+  font-weight: 700;
+  color: #252525;
+  font-family: 'Courier New', monospace;
+}
+
+.gs-spacing-usage {
+  font-size: 12px;
+  font-weight: 500;
+  color: #ACACAC;
+  letter-spacing: 0.02em;
+}
+
+/* ──── GUTTER REFERENCE SECTION ──── */
+.gs-gutter-section {
+  margin-bottom: 56px;
+}
+
+.gs-gutter-desc {
+  font-size: 13.33px;
+  font-weight: 500;
+  color: #616161;
+  line-height: 1.6;
+  margin: 0 0 20px;
+}
+
+.gs-gutter-table {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  margin-top: 24px;
+}
+
+.gs-gutter-row {
+  display: flex;
+  align-items: center;
+  gap: 24px;
+  padding: 16px;
+  background: white;
+  border: 1px solid rgba(9, 9, 9, 0.06);
+  border-radius: 4px;
+}
+
+.gs-gutter-breakpoint {
+  font-size: 13.33px;
+  font-weight: 700;
+  color: #252525;
+  min-width: 120px;
+}
+
+.gs-gutter-value {
+  font-size: 13.33px;
+  font-weight: 700;
+  font-family: 'Courier New', monospace;
+  color: #1069E9;
+  min-width: 80px;
+}
+
+.gs-gutter-visual {
+  height: 24px;
+  background: linear-gradient(90deg, rgba(16, 96, 233, 0.5) 0%, rgba(16, 96, 233, 0.3) 100%);
+  border-radius: 2px;
+  flex-shrink: 0;
+}

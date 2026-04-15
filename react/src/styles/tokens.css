@@ -1,0 +1,171 @@
+/* Design Tokens - EOS Design System */
+
+:root {
+  /* ============================================
+     COLORS
+     ============================================ */
+  
+  /* Brand Colors */
+  --color-brand-red: #E22D00;
+  --color-brand-red-dark: #A81910;
+  --color-brand-red-darker: #601B15;
+  
+  /* Neutrals */
+  --color-black: #1B1B1B;
+  --color-off-black: #090909;
+  --color-off-black-light: #252525;
+  --color-off-black-text: #242222;
+  --color-off-black-select: #333333;
+  --color-gray-dark: #616161;
+  --color-gray-mid: #ACACAC;
+  --color-gray-light: #EBEBEB;
+  --color-off-white: #FAFAFA;
+  --color-white: #FFFFFF;
+  --color-off-white-select: #F6F6F6;
+  
+  /* Utility Colors */
+  --color-error-red: #CD4557;
+  --color-success-green: #00816C;
+  --color-warning-yellow: #CE973D;
+  
+  /* Experience Colors */
+  --color-experience-blue: #E7EDEE;
+  --color-experience-green: #283D28;
+  --color-text-subtle: rgba(37, 37, 37, 0.7);
+  
+  /* Borders */
+  --border-pin-line-dark: 1px solid rgba(9, 9, 9, 0.15);
+  --border-pin-line-light: 5px solid rgba(255, 255, 255, 0.2);
+  
+  /* ============================================
+     TYPOGRAPHY
+     ============================================ */
+  
+  --font-family: 'Meta Offc', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+  
+  /* Display */
+  --font-display-size: 118.88px;
+  --font-display-weight: 700;
+  --font-display-line-height: 110%;
+  --font-display-letter-spacing: -0.03em;
+  
+  /* Heading 2 */
+  --font-h2-size: 57.33px;
+  --font-h2-weight: 700;
+  --font-h2-line-height: 110%;
+  --font-h2-letter-spacing: -0.02em;
+  
+  /* Heading 4 */
+  --font-h4-size: 33.18px;
+  --font-h4-weight: 700;
+  --font-h4-line-height: 120%;
+  
+  /* Heading 5 */
+  --font-h5-size: 23.04px;
+  --font-h5-weight: 700;
+  --font-h5-line-height: 120%;
+  --font-h5-letter-spacing: -0.01em;
+  
+  /* UI Desktop */
+  --font-ui-desktop-size: 16px;
+  --font-ui-desktop-weight-regular: 400;
+  --font-ui-desktop-weight-medium: 500;
+  --font-ui-desktop-weight-bold: 700;
+  --font-ui-desktop-line-height: 120%;
+  --font-ui-desktop-letter-spacing: 0.01em;
+  
+  /* UI Mobile */
+  --font-ui-mobile-size: 13.33px;
+  --font-ui-mobile-weight: 400;
+  --font-ui-mobile-line-height: 120%;
+  --font-ui-mobile-letter-spacing: 0.01em;
+  
+  --font-ui-mobile-small-size: 13.33px;
+  --font-ui-mobile-small-weight: 700;
+  --font-ui-mobile-small-line-height: 120%;
+  --font-ui-mobile-small-letter-spacing: 0.01em;
+  
+  /* Eyebrow */
+  --font-eyebrow-size: 13.33px;
+  --font-eyebrow-weight: 500;
+  --font-eyebrow-line-height: 120%;
+  --font-eyebrow-letter-spacing: 0.01em;
+  
+  /* ============================================
+     SPACING
+     ============================================ */
+  
+  --space-xs: 4px;
+  --space-sm: 8px;
+  --space-md: 16px;
+  --space-lg: 24px;
+  --space-xl: 32px;
+  --space-2xl: 48px;
+  --space-3xl: 64px;
+  
+  /* ============================================
+     COMPONENTS
+     ============================================ */
+  
+  /* Buttons */
+  --button-large-height: 55px;
+  --button-large-width: 375px;
+  --button-border-radius: 4px;
+  
+  /* Form Fields */
+  --field-height: 55px;
+  --field-border-radius: 5px;
+  --field-border: 1px solid var(--color-gray-dark);
+  
+  /* Icons */
+  --icon-size-large: 44px;
+  --icon-size-medium: 24px;
+  --icon-size-small: 20px;
+  
+  /* Radio/Checkboxes */
+  --input-size-large: 44px;
+  --input-inner-size: 20px;
+}
+
+/* Typography Classes */
+
+.display {
+  font-size: var(--font-display-size);
+  font-weight: var(--font-display-weight);
+  line-height: var(--font-display-line-height);
+  letter-spacing: var(--font-display-letter-spacing);
+}
+
+.h2 {
+  font-size: var(--font-h2-size);
+  font-weight: var(--font-h2-weight);
+  line-height: var(--font-h2-line-height);
+  letter-spacing: var(--font-h2-letter-spacing);
+}
+
+.h4 {
+  font-size: var(--font-h4-size);
+  font-weight: var(--font-h4-weight);
+  line-height: var(--font-h4-line-height);
+}
+
+.h5 {
+  font-size: var(--font-h5-size);
+  font-weight: var(--font-h5-weight);
+  line-height: var(--font-h5-line-height);
+  letter-spacing: var(--font-h5-letter-spacing);
+}
+
+.ui-desktop {
+  font-size: var(--font-ui-desktop-size);
+  font-weight: var(--font-ui-desktop-weight);
+  line-height: var(--font-ui-desktop-line-height);
+  letter-spacing: var(--font-ui-desktop-letter-spacing);
+}
+
+.ui-mobile {
+  font-size: var(--font-ui-mobile-size);
+  font-weight: var(--font-ui-mobile-weight);
+  line-height: var(--font-ui-mobile-line-height);
+  letter-spacing: var(--font-ui-mobile-letter-spacing);
+}
