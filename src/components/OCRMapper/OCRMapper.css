@@ -114,6 +114,16 @@
   flex-shrink: 0;
 }
 
+.ocr-mapper__badge {
+  font-size: 10px;
+  color: #10b981;
+  font-weight: 600;
+  background: #ecfdf5;
+  padding: 2px 6px;
+  border-radius: 12px;
+  flex-shrink: 0;
+}
+
 .ocr-mapper__item-btn {
   padding: 4px 8px;
   font-size: 11px;
@@ -211,6 +221,13 @@
   border: 1px solid #334155;
   white-space: pre-wrap;
   word-break: break-word;
+}
+
+.ocr-mapper__text-truncated {
+  font-size: 11px;
+  color: #94a3b8;
+  font-style: italic;
+  margin: 4px 0 0 0;
 }
 
 .ocr-mapper__empty {

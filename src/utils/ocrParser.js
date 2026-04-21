@@ -51,79 +51,80 @@ export async function extractTextFromPDF(pdfFile) {
 
 /**
  * Parses extracted text to identify article codes and quantities
- * Supports formats like:
- *  - "E25FNFK-10 5" (code + qty on one line)
- *  - "E25FNFK-10\nQuantity: 5"
- *  - "Article: E25FNFK-10, Qty: 3"
+ * Uses improved pattern matching and sorting for better organization
  *
  * @param {string} text - Raw extracted text
- * @returns {Array<{articleCode: string, featureString: string, qty: number}>}
+ * @returns {Array<{articleCode: string, featureString: string, qty: number, confidence: number}>}
  */
 export function parseOCRText(text) {
   const items = []
-  const lines = text.split(/\r?\n/).filter(Boolean)
+  const lines = text.split(/\r?\n/).map((l) => l.trim()).filter(Boolean)
 
-  // Pattern 1: "CODE QTY" on single line
-  const singleLinePattern = /^([A-Z0-9\.-]+)\s+(\d+)$/i
-  // Pattern 2: "CODE" followed by "QTY: N" or "Quantity: N"
-  const multiLinePattern = /^([A-Z0-9\.-]+)/i
-  // Pattern 3: "Article: CODE, Qty: N"
-  const structuredPattern = /Article[:\s]+([A-Z0-9\.-]+)[,\s]*Qu?ty[:\s]*(\d+)/i
+  // Improved patterns for article codes (Herman Miller format)
+  // Matches: E25FNFK-10, AER1B23, RATIO1DN-1, etc.
+  const articleCodePattern = /\b([A-Z]{1,6}\d+[A-Z]?\d*(?:[.-][A-Z0-9]*)?)\b/g
+  const quantityPattern = /(?:qty|quantity|qte|qte|x|×|\*)\s*[:\s]*(\d+)|(\d+)\s*(?:unit|pc|pcs|stk)/i
 
-  for (const line of lines) {
-    let match
+  // Extract potential article codes from entire text
+  const codeMatches = text.matchAll(articleCodePattern)
+  const seenCodes = new Set()
 
-    // Try structured format first
-    match = line.match(structuredPattern)
-    if (match) {
-      items.push({
-        articleCode: match[1].trim(),
-        featureString: '',
-        qty: parseInt(match[2], 10) || 1,
-      })
-      continue
-    }
+  for (const match of codeMatches) {
+    const code = match[0].trim()
 
-    // Try single-line format
-    match = line.match(singleLinePattern)
-    if (match) {
-      items.push({
-        articleCode: match[1].trim(),
-        featureString: '',
-        qty: parseInt(match[2], 10) || 1,
-      })
-      continue
-    }
+    // Filter out likely false positives (too short, all numbers, etc)
+    if (code.length < 3 || /^\d+$/.test(code) || seenCodes.has(code)) continue
 
-    // Try to extract just code from line
-    match = line.match(multiLinePattern)
-    if (match) {
-      const code = match[1].trim()
-      if (code.length >= 3) {
-        // Look ahead for quantity
-        let qty = 1
-        const nextLine = lines[lines.indexOf(line) + 1] || ''
-        const qtyMatch = nextLine.match(/(\d+)/)
-        if (qtyMatch) {
-          qty = parseInt(qtyMatch[1], 10)
-        }
-        items.push({
-          articleCode: code,
-          featureString: '',
-          qty,
-        })
+    seenCodes.add(code)
+
+    // Find the line containing this code
+    const lineIndex = lines.findIndex((l) => l.includes(code))
+    const contextLine = lineIndex >= 0 ? lines[lineIndex] : ''
+    const nextLine = lineIndex >= 0 && lineIndex < lines.length - 1 ? lines[lineIndex + 1] : ''
+
+    // Try to extract quantity from context
+    let qty = 1
+    let confidence = 'medium'
+
+    // Check current line for quantity
+    let qtyMatch = contextLine.match(quantityPattern)
+    if (qtyMatch) {
+      qty = parseInt(qtyMatch[1] || qtyMatch[2], 10) || 1
+      confidence = 'high'
+    } else {
+      // Check next line
+      qtyMatch = nextLine.match(quantityPattern)
+      if (qtyMatch) {
+        qty = parseInt(qtyMatch[1] || qtyMatch[2], 10) || 1
+        confidence = 'high'
       }
+    }
+
+    items.push({
+      articleCode: code,
+      featureString: '',
+      qty: Math.max(1, qty),
+      confidence,
+      lineIndex, // for sorting later
+    })
+  }
+
+  // Remove duplicates while preserving first occurrence
+  const uniqueItems = []
+  const seen = new Set()
+  for (const item of items) {
+    const key = item.articleCode
+    if (!seen.has(key)) {
+      seen.add(key)
+      uniqueItems.push(item)
     }
   }
 
-  // Remove duplicates
-  const seen = new Set()
-  return items.filter((item) => {
-    const key = item.articleCode + (item.featureString || '')
-    if (seen.has(key)) return false
-    seen.add(key)
-    return true
-  })
+  // Sort by line order (preserve document structure)
+  uniqueItems.sort((a, b) => a.lineIndex - b.lineIndex)
+
+  // Remove helper fields before returning
+  return uniqueItems.map(({ lineIndex, confidence, ...item }) => item)
 }
 
 /**

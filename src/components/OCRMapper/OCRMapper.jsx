@@ -2,6 +2,24 @@ import { useState } from 'react'
 import './OCRMapper.css'
 
 /**
+ * Cleans and formats extracted text for display
+ * Removes excessive whitespace, consolidates empty lines
+ */
+function cleanExtractedText(text) {
+  return text
+    .split('\n')
+    .map((line) => line.trim())
+    .filter((line, index, arr) => {
+      // Keep line if it's not empty, or if it's not consecutive empty lines
+      if (line) return true
+      const prevEmpty = index > 0 && arr[index - 1].trim() === ''
+      return !prevEmpty
+    })
+    .join('\n')
+    .substring(0, 2000) // Limit to 2000 chars for display
+}
+
+/**
  * Allows users to preview and validate OCR-extracted text before importing.
  * Shows detected items and allows editing/selection before import.
  */
@@ -10,6 +28,9 @@ export function OCRMapper({ extractedText, detectedItems, onConfirm, onCancel })
   const [editingId, setEditingId] = useState(null)
   const [editCode, setEditCode] = useState('')
   const [editQty, setEditQty] = useState('')
+
+  const cleanedText = cleanExtractedText(extractedText)
+  const hasHighConfidenceItems = items.some((i) => i.confidence === 'high')
 
   const handleEdit = (id) => {
     const item = items.find((i) => i.id === id)
@@ -100,6 +121,7 @@ export function OCRMapper({ extractedText, detectedItems, onConfirm, onCancel })
                     <div className="ocr-mapper__item-display">
                       <span className="ocr-mapper__item-code">{item.articleCode}</span>
                       <span className="ocr-mapper__item-qty">× {item.qty}</span>
+                      {item.confidence === 'high' && <span className="ocr-mapper__badge">✓ Detected</span>}
                       <button
                         className="ocr-mapper__item-btn ocr-mapper__item-btn--edit"
                         onClick={() => handleEdit(item.id)}
@@ -121,8 +143,9 @@ export function OCRMapper({ extractedText, detectedItems, onConfirm, onCancel })
         </div>
 
         <div className="ocr-mapper__section">
-          <h4 className="ocr-mapper__section-title">Extracted Text</h4>
-          <pre className="ocr-mapper__text-preview">{extractedText}</pre>
+          <h4 className="ocr-mapper__section-title">Extracted Text (Cleaned)</h4>
+          <pre className="ocr-mapper__text-preview">{cleanedText}</pre>
+          {cleanedText.length >= 2000 && <p className="ocr-mapper__text-truncated">... (text truncated)</p>}
         </div>
       </div>
 
