@@ -6,20 +6,21 @@
 
 .article-input__label {
   font-size: 13px;
-  font-weight: 600;
-  color: #374151;
+  font-weight: var(--font-ui-desktop-weight-medium);
+  color: var(--color-black);
+  letter-spacing: var(--font-ui-desktop-letter-spacing);
 }
 
 .article-input__textarea {
   width: 100%;
   resize: vertical;
-  border: 1.5px solid #e2e8f0;
-  border-radius: 8px;
+  border: 1.5px solid var(--color-gray-light);
+  border-radius: 2px;
   padding: 10px 12px;
   font-size: 13px;
-  font-family: 'SFMono-Regular', 'Consolas', 'Liberation Mono', monospace;
-  color: #0f172a;
-  background: #f8fafc;
+  font-family: var(--font-family);
+  color: var(--color-black);
+  background: var(--color-off-white-select);
   line-height: 1.6;
   min-height: 154px;
   transition: border-color 0.15s, box-shadow 0.15s;
@@ -27,9 +28,9 @@
 
 .article-input__textarea:focus {
   outline: none;
-  border-color: #2563eb;
-  box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.12);
-  background: #fff;
+  border-color: var(--color-brand-red);
+  box-shadow: 0 0 0 3px rgba(226, 45, 0, 0.1);
+  background: var(--color-white);
 }
 
 .article-input__textarea:disabled {
@@ -51,26 +52,28 @@
 
 .article-input__hint {
   font-size: 12px;
-  color: #94a3b8;
+  color: var(--color-gray-mid);
 }
 
 .article-input__hint code {
-  font-family: inherit;
-  background: #f1f5f9;
-  border: 1px solid #e2e8f0;
-  border-radius: 3px;
+  font-family: var(--font-family);
+  background: var(--color-off-white-select);
+  border: var(--border-pin-line-dark);
+  border-radius: 2px;
   padding: 1px 4px;
   font-size: 11px;
 }
 
 .article-input__btn {
-  background: #0f172a;
-  color: #fff;
+  background: var(--color-brand-red);
+  color: var(--color-white);
   border: none;
-  border-radius: 7px;
+  border-radius: 2px;
   padding: 8px 18px;
   font-size: 13px;
-  font-weight: 600;
+  font-weight: var(--font-ui-desktop-weight-bold);
+  font-family: var(--font-family);
+  letter-spacing: var(--font-ui-desktop-letter-spacing);
   cursor: pointer;
   white-space: nowrap;
   transition: background 0.15s;
@@ -78,7 +81,7 @@
 }
 
 .article-input__btn:hover:not(:disabled) {
-  background: #1e293b;
+  background: var(--color-brand-red-dark);
 }
 
 .article-input__btn:disabled {

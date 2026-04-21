@@ -11,11 +11,11 @@ export default defineConfig(({ mode }) => {
       include: ['xlsx', 'tesseract.js', 'pdfjs-dist'],
     },
     server: {
+      host: '127.0.0.1',
       proxy: {
         '/api': {
           target: apiTarget,
           changeOrigin: true,
-          // Forward requests to the .NET Web API without CORS issues
         },
       },
     },
