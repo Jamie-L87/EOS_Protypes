@@ -8,7 +8,7 @@ export default defineConfig(({ mode }) => {
   return {
     plugins: [react()],
     optimizeDeps: {
-      include: ['xlsx'],
+      include: ['xlsx', 'tesseract.js', 'pdfjs-dist'],
     },
     server: {
       proxy: {
