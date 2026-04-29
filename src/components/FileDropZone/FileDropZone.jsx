@@ -19,60 +19,92 @@ const ACCEPT_MAP = {
 
 /**
  * Drag-and-drop / click-to-browse file zone.
- * Parses the file client-side and calls onParsed({ items, fileName, format, error }).
+ * Supports single or multiple files. Processes sequentially, preserving file order.
+ * Calls onParsed({ items, fileName, format, error }) when done.
  */
 export function FileDropZone({ onParsed, disabled }) {
   const inputRef = useRef(null)
   const [dragging, setDragging] = useState(false)
-  const [fileName, setFileName] = useState(null)
+  const [fileNames, setFileNames] = useState([])
+  const [currentFileIndex, setCurrentFileIndex] = useState(0)
   const [summary, setSummary] = useState(null)
   const [loading, setLoading] = useState(false)
 
-  async function processFile(file) {
-    const ext = ('.' + file.name.split('.').pop()).toLowerCase()
-    const format = ACCEPT_MAP[ext]
-    if (!format) {
-      onParsed({ items: [], fileName: file.name, format: null, error: `Unsupported file type: ${ext}` })
-      return
-    }
+  async function processFiles(files) {
+    if (!files || files.length === 0) return
 
-    setFileName(file.name)
-    setSummary(null)
     setLoading(true)
+    setFileNames(Array.from(files).map(f => f.name))
+    setCurrentFileIndex(0)
 
-    let result
-    try {
-      if (ext === '.xlsx') {
-        const buf = await file.arrayBuffer()
-        result = parseXLSX(buf)
-      } else if (ext === '.pdf' || ext === '.jpg' || ext === '.jpeg' || ext === '.png') {
-        // OCR-based import
-        result = await parseOCRDocument(file)
-      } else {
-        const text = await file.text()
-        result = ext === '.obx' ? parseOBX(text) : parseSIF(text)
+    const allResults = []
+
+    for (let i = 0; i < files.length; i++) {
+      const file = files[i]
+      setCurrentFileIndex(i)
+
+      const ext = ('.' + file.name.split('.').pop()).toLowerCase()
+      const format = ACCEPT_MAP[ext]
+      if (!format) {
+        onParsed({ items: [], fileName: file.name, format: null, error: `Unsupported file type: ${ext}` })
+        setLoading(false)
+        setFileNames([])
+        return
       }
-    } catch (error) {
-      result = { items: [], error: error.message }
+
+      let result
+      try {
+        if (ext === '.xlsx') {
+          const buf = await file.arrayBuffer()
+          result = parseXLSX(buf)
+        } else if (ext === '.pdf' || ext === '.jpg' || ext === '.jpeg' || ext === '.png') {
+          result = await parseOCRDocument(file)
+        } else {
+          const text = await file.text()
+          result = ext === '.obx' ? parseOBX(text) : parseSIF(text)
+        }
+      } catch (error) {
+        result = { items: [], error: error.message }
+      }
+
+      if (result.error) {
+        onParsed({ items: [], fileName: file.name, format: null, error: result.error })
+        setLoading(false)
+        setFileNames([])
+        return
+      }
+
+      if (result.needsReview || result.needsMapping) {
+        // If any file needs review/mapping, stop and let the mapper handle it
+        onParsed({ ...result, fileName: file.name, format })
+        setLoading(false)
+        setFileNames([])
+        return
+      }
+
+      if (result.items?.length) {
+        allResults.push(...result.items)
+      }
     }
 
     setLoading(false)
-    const count = result.items?.length ?? 0
-    const summary = result.error ? null : (result.needsReview ? 'Awaiting review' : result.needsMapping ? 'Awaiting column mapping' : `${count} article${count !== 1 ? 's' : ''} found`)
+    setFileNames([])
+    const count = allResults.length
+    const summary = count === 0 ? null : `${count} article${count !== 1 ? 's' : ''} found from ${files.length} file${files.length !== 1 ? 's' : ''}`
     setSummary(summary)
-    onParsed({ ...result, fileName: file.name, format })
+    onParsed({ items: allResults, fileName: Array.from(files).map(f => f.name).join(', '), format: 'Mixed' })
   }
 
   function onDrop(e) {
     e.preventDefault()
     setDragging(false)
-    const file = e.dataTransfer.files?.[0]
-    if (file) processFile(file)
+    const files = e.dataTransfer.files
+    if (files?.length) processFiles(files)
   }
 
   function onChange(e) {
-    const file = e.target.files?.[0]
-    if (file) processFile(file)
+    const files = e.target.files
+    if (files?.length) processFiles(files)
     e.target.value = ''
   }
 
@@ -92,13 +124,14 @@ export function FileDropZone({ onParsed, disabled }) {
         ref={inputRef}
         type="file"
         accept={ACCEPTED}
+        multiple
         style={{ display: 'none' }}
         onChange={onChange}
       />
 
       {loading ? (
         <>
-          <div className="dropzone__spinner" role="status" aria-label="Parsing file">
+          <div className="dropzone__spinner" role="status" aria-label="Parsing files">
             <svg className="dropzone__spinner-ring" viewBox="0 0 44 44" width="40" height="40">
               <circle cx="22" cy="22" r="18" fill="none" stroke="#e2e8f0" strokeWidth="3" />
               <circle
@@ -109,10 +142,12 @@ export function FileDropZone({ onParsed, disabled }) {
               />
             </svg>
           </div>
-          <p className="dropzone__loading-name">{fileName}</p>
-          <p className="dropzone__loading-label">Parsing file…</p>
+          <p className="dropzone__loading-name">{fileNames[currentFileIndex]}</p>
+          <p className="dropzone__loading-label">
+            {fileNames.length > 1 ? `Processing file ${currentFileIndex + 1} of ${fileNames.length}…` : 'Parsing file…'}
+          </p>
         </>
-      ) : !fileName ? (
+      ) : !fileNames.length ? (
         <>
           <div className="dropzone__icon" aria-hidden="true">
             <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5">
@@ -132,14 +167,16 @@ export function FileDropZone({ onParsed, disabled }) {
               <polyline points="14 2 14 8 20 8" />
             </svg>
           </div>
-          <p className="dropzone__filename">{fileName}</p>
+          <p className="dropzone__filename">
+            {fileNames.length > 1 ? `${fileNames.length} files selected` : fileNames[0]}
+          </p>
           {summary && <p className="dropzone__summary">{summary}</p>}
           <button
             className="dropzone__clear"
-            onClick={(e) => { e.stopPropagation(); setFileName(null); setSummary(null); onParsed({ items: [], fileName: null, format: null }) }}
-            aria-label="Clear file"
+            onClick={(e) => { e.stopPropagation(); setFileNames([]); setSummary(null); onParsed({ items: [], fileName: null, format: null }) }}
+            aria-label="Clear files"
           >
-            Change file
+            Change files
           </button>
         </>
       )}
